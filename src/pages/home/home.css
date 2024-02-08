@@ -1,0 +1,36 @@
+.homeMainCont{
+    height: 100vh;
+    width: 100%;
+}
+
+.homeMainBgImg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: bottom;
+    z-index: -1;
+}
+
+.homeMainText1 {
+    line-height: 1;
+}
+
+.homeMainText1 {
+    font-size: 3.5rem;
+    font-family: 'GothamBold', sans-serif;
+}
+
+.homeMainText2 {
+    font-size: 3rem;
+    font-family: 'heaters', sans-serif;
+}
+
+.homeMainDivider {
+    width: 0.275rem;
+    height: 2.75rem;
+    background-color: white;
+    margin: 0 0.80rem;
+}

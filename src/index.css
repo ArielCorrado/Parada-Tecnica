@@ -1,13 +1,101 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+    font-family: 'heaters';
+    src: url('../public/fonts/Heaters.otf') format('opentype');   /*font-family: 'heaters', sans-serif;*/
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+    font-family: 'GothamBook';
+    src: url('../public/fonts/GothamBook.ttf') format('opentype');   /*font-family: 'GothamBook', sans-serif;*/
+}
+
+@font-face {
+    font-family: 'GothamBold';
+    src: url('../public/fonts/GothamBold.ttf') format('opentype');   /*font-family: 'GothamBold', sans-serif;*/
+}
+
+:root {
+    --color-web-1: #282E3F;
+    --color-web-2: #333A4D;
+    --color-web-3: #BF884E;
+    --color-web-4: #CF9455;
+
+    --font-style-principal: 'Poppins', sans-serif;
+    --text-light-color: rgb(255, 255, 255);
+    --text-dark-color: var(--color-web-1);
+
+    --navBar-height: 6rem;
+    --navBar-border-lines-color: #3f4555;
+    --color-navbar-hover: #d19f6a;
+
+    --concerns-cards-width: 15rem;
+    --concerns-cards-height: 15rem;
+    --concerns-cards-margin: 2rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    line-height: 1.2;
+    font-weight: 300;
+    list-style: none;
+    font-size: 16px;
+    font-family: var(--font-style-principal);
+    color: var(--text-light-color);
+    text-align: center;
+}
+
+body {
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.opb {
+    object-position: bottom;
+}
+
+.opt {
+    object-position: top;
+}
+
+.opc {
+    object-position: center;
+}
+
+.opr {
+    object-position: right;
+}
+
+.opl {
+    object-position: left;
+}
+
+@media only screen and (orientation: landscape) {
+    html {
+        font-size: calc(1vh + 14px);
+    }
+}
+
+@media only screen and (orientation: portrait) {
+    html {
+        font-size: calc(1vw + 14px);
+    }
 }
