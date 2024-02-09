@@ -1,0 +1,42 @@
+.activitiesCont {
+    min-height: 100vh;
+    width: 100%;
+    background-color: white;
+}
+
+.activitiesTitleCont {
+    align-items: flex-start;
+}
+
+.activitiesTitle1 {
+    font-family: var(--font-style-2);
+    font-size: var(--font2-default-size);
+    color: var(--color-web-2);
+    line-height: 0.25;
+}
+
+.activitiesTitle2 {
+    font-family: var(--font-style-1);
+    font-size: var(--font1-large-size);
+    color: var(--color-web-1);
+}
+
+.activitiesDescCont {
+    border: 2px solid var(--text-dark-color);
+    padding: 1rem;
+}
+
+.activitiesDesc2 {
+    font-family: var(--font-style-1);
+    font-size: var(--font1-medium-size);
+    color: var(--color-web-3);
+}
+
+.activitiesOptionsCont {
+    padding: 5rem 1rem;
+}
+
+.activitiesOptionsIcon {
+    height: 10rem;
+    margin: 1rem;
+}

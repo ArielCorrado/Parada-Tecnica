@@ -1,3 +1,12 @@
 .cursive {
     font-style: oblique;
 }
+
+.textBold {
+    font-size: inherit;
+    font-family: var(--font-style-2);
+}
+
+.seccionsPadding {
+    padding: 5rem 1rem;
+}

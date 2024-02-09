@@ -1,6 +1,7 @@
 .homeMainCont{
     height: 100vh;
     width: 100%;
+    position: relative;
 }
 
 .homeMainBgImg {
@@ -19,13 +20,15 @@
 }
 
 .homeMainText1 {
+    color: var(--text-light-color);
     font-size: 3.5rem;
-    font-family: 'GothamBold', sans-serif;
+    font-family: var(--font-style-2);
 }
 
 .homeMainText2 {
-    font-size: 3rem;
-    font-family: 'heaters', sans-serif;
+    color: var(--text-light-color);
+    font-size: var(--font1-small-size);
+    font-family: var(--font-style-1);
 }
 
 .homeMainDivider {

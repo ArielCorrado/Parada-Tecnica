@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');  /* font-family: 'Poppins', sans-serif; */
+
 @font-face {
     font-family: 'heaters';
     src: url('../public/fonts/Heaters.otf') format('opentype');   /*font-family: 'heaters', sans-serif;*/
@@ -14,34 +16,42 @@
 }
 
 :root {
-    --color-web-1: #282E3F;
-    --color-web-2: #333A4D;
-    --color-web-3: #BF884E;
-    --color-web-4: #CF9455;
+    --color-web-1: #656a77;
+    --color-web-2: #7a8dc2;
+    --color-web-3: #8a94b4;
+    
+    --font-style-principal: 'GothamBook', sans-serif;
 
-    --font-style-principal: 'Poppins', sans-serif;
+    --font-style-1: 'heaters', sans-serif;
+    --font1-small-size: 2.5rem;
+    --font1-medium-size: 3.5rem;
+    --font1-large-size: 5.5rem;
+        
+    --font-style-2: 'GothamBold', sans-serif;
+    --font2-default-size: 3rem;
+
+    --font-style-3: 'GothamBook', sans-serif;
+    --font3-default-size: 3rem;
+
     --text-light-color: rgb(255, 255, 255);
-    --text-dark-color: var(--color-web-1);
+    --text-dark-color: rgb(31, 31, 31);
 
     --navBar-height: 6rem;
     --navBar-border-lines-color: #3f4555;
     --color-navbar-hover: #d19f6a;
-
-    --concerns-cards-width: 15rem;
-    --concerns-cards-height: 15rem;
-    --concerns-cards-margin: 2rem;
+    --alto-navbar: 4rem
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    line-height: 1.2;
+    line-height: 1.1;
     font-weight: 300;
     list-style: none;
-    font-size: 16px;
+    font-size: 1.5rem;
     font-family: var(--font-style-principal);
-    color: var(--text-light-color);
+    color: var(--text-dark-color);
     text-align: center;
 }
 
