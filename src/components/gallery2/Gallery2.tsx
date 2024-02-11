@@ -167,6 +167,7 @@ function Gallery2 () {
         setImages(imagesJSX);
         setThumbnails(thumbnailsJSX);
         
+    // eslint-disable-next-line
     }, [centerIndex])
     
     useEffect(() => {
@@ -204,6 +205,7 @@ function Gallery2 () {
         gallery?.addEventListener("click", () => clearInterval(intervalId.current));
 
         return () => clearInterval(intervalId.current)
+    // eslint-disable-next-line
     }, [])
 
     return (
