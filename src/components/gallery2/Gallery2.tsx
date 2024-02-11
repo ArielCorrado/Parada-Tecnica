@@ -4,8 +4,9 @@ import { useEffect, useState, useRef } from "react";
 function Gallery2 () {
 
     const direcionNext = useRef (false);
-    const enter = useRef (true);
+    const enter = useRef (true);    
     const [centerIndex, setCenterIndex] = useState <number> (0);
+    let intervalId = useRef <NodeJS.Timer> ();
 
     const [images, setImages] = useState <JSX.Element[]> ([]);
     const [thumbnails, setThumbnails] = useState <JSX.Element[]> ([]);
@@ -110,7 +111,7 @@ function Gallery2 () {
             enter.current = false;
             if (next) {
                 direcionNext.current = true;
-                centerIndex + 1 >= imagesArr.length ? setCenterIndex(0) :  setCenterIndex((index) => index + 1);
+                centerIndex + 1 >= imagesArr.length ? setCenterIndex(0) : setCenterIndex((index) => index + 1);
             } else {
                 direcionNext.current = false;
                 centerIndex - 1 < 0 ? setCenterIndex(imagesArr.length - 1) : setCenterIndex((index) => index - 1);
@@ -190,10 +191,21 @@ function Gallery2 () {
 
             animation?.addEventListener("finish", () => enter.current = true)
         }
-        
+             
     }, [images])
-    
-   
+
+    useEffect(() => {
+        const next = () => {
+            handleIndex(true)
+        }
+        intervalId.current = setInterval(next, 4000);
+
+        const gallery = document.querySelector(".galleryCont");
+        gallery?.addEventListener("click", () => clearInterval(intervalId.current));
+
+        return () => clearInterval(intervalId.current)
+    }, [])
+
     return (
         <div className="galleryCont flex column">
             <div className="gallerySliderMainCont">
