@@ -10,6 +10,7 @@ function Gallery2 () {
 
     const [images, setImages] = useState <JSX.Element[]> ([]);
     const [thumbnails, setThumbnails] = useState <JSX.Element[]> ([]);
+    const [bullets, setBullets] = useState <JSX.Element[]> ([]);
 
     const imagesArr = [
         {
@@ -164,8 +165,14 @@ function Gallery2 () {
            <img src={img.thumbnail} alt="Gallery" key={index} className="galleryThumbnailImg galleryThumbnailImgSelect" onClick={() => handleCenterIndexFromImage(centerIndex, index)}/> :
            <img src={img.thumbnail} alt="Gallery" key={index} className="galleryThumbnailImg" onClick={() => handleCenterIndexFromImage(centerIndex, index)}/>
         });
+        const bulletsJSX = imagesArr.map((img, index) => {
+            return index === centerIndex ?
+            <div key={index} className="galleryBullet galleryBulletSelect" onClick={() => handleCenterIndexFromImage(centerIndex, index)}></div> :
+            <div key={index} className="galleryBullet" onClick={() => handleCenterIndexFromImage(centerIndex, index)}></div>
+        });
         setImages(imagesJSX);
         setThumbnails(thumbnailsJSX);
+        setBullets(bulletsJSX);
         
     // eslint-disable-next-line
     }, [centerIndex])
@@ -217,6 +224,7 @@ function Gallery2 () {
                 <div className="gallerySliderCont flex">
                     {images}
                 </div>
+                <div className="galleryBulletsCont flex">{bullets}</div>
             </div>
             <div className="galleryThumbnailsCont">
                 {thumbnails}
