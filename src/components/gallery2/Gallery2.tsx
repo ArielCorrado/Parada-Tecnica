@@ -194,8 +194,8 @@ function Gallery2 () {
             const slider = document.querySelector(".gallerySliderCont");
             const animation = slider?.animate([
                 // keyframes
-                { transform: `translateX(${directionSign * imageWidth}px)`, opacity: "1" },
-                { transform: 'translateX(0)', opacity: "1" }
+                { transform: `translateX(${directionSign * imageWidth}px)`},
+                { transform: 'translateX(0)'}
             ], {
                 // timing options
                 duration: 800,
