@@ -1,12 +1,13 @@
 .galleryCont {
+    position: relative;
     --alto-thumbnails: 5rem;
     width: 100%;    
     height: 100vh;
     justify-content: flex-start;
+    overflow: hidden;
 }
 
 .gallerySliderCont {
-    position: relative;
     height: calc(100% - var(--alto-thumbnails));
     width: 100%;
 }
@@ -16,15 +17,27 @@
     min-width: 33.33%;
     height: 100%;
     object-fit: cover;
+    padding: 0 0.25rem;
 }
 
 .galleryThumbnailsCont {
     height: var(--alto-thumbnails);
     width: 100%;
+    padding: 0.25rem 0;
 }
 
 .galleryThumbnailImg {
     height: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    z-index: 200;
+    cursor: pointer;
+    margin: 0 0.125rem;
+}
+
+.galleryThumbnailImgSelect {
+    border: 4px solid var(--color-web-2);
+    z-index: 1000;
 }
 
 .galleryNextIcon, .galleryPrevIcon {
@@ -35,6 +48,7 @@
     filter: invert(100%);
     height: 4rem;
     cursor: pointer;
+    z-index: 100;
 }
 
 .galleryPrevIcon {
@@ -44,5 +58,30 @@
 
 .galleryNextIcon {
     right: 1rem;
+}
+
+.galleryNext {
+    animation-name: galleryNext;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes galleryNext {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@media only screen and (orientation: portrait) {
+    .galleryImg {
+        width: 100%;
+        min-width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 }
 

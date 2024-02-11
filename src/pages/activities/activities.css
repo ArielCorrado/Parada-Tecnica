@@ -25,6 +25,7 @@
 .activitiesDescCont {
     border: 2px solid var(--text-dark-color);
     padding: 1rem;
+    max-width: 100%;
 }
 
 .activitiesDesc2 {

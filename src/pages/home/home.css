@@ -4,6 +4,10 @@
     position: relative;
 }
 
+.homeMainLogo {
+    max-width: 33vw;
+}
+
 .homeMainBgImg {
     position: absolute;
     left: 0;
@@ -17,9 +21,6 @@
 
 .homeMainText1 {
     line-height: 1;
-}
-
-.homeMainText1 {
     color: var(--text-light-color);
     font-size: 3.5rem;
     font-family: var(--font-style-2);
@@ -36,4 +37,11 @@
     height: 2.75rem;
     background-color: white;
     margin: 0 0.80rem;
+}
+
+@media only screen and (orientation: portrait) {
+
+    .homeMainText1 {
+        font-size: 2.5rem;
+    }
 }

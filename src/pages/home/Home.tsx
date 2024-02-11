@@ -5,7 +5,7 @@ function Home() {
         <div className="homeMainCont flex">
             <div className="homeMainTextCont flex column">
                 <div className="flex">
-                    <img src="/images/logo.png" alt="Logo" />
+                    <img src="/images/logo.png" alt="Logo" className="homeMainLogo"/>
                     <div className="homeMainDivider"></div>
                     <div className="homeMainTexts flex column"> 
                         <p className="homeMainText1">Parada</p>

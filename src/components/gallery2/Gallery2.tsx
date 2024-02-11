@@ -3,10 +3,12 @@ import { useEffect, useState, useRef } from "react";
 
 function Gallery2 () {
 
-    const [index, setIndex] = useState <number> (0);
+    const direcionNext = useRef (false);
+    const enter = useRef (true);
+    const [centerIndex, setCenterIndex] = useState <number> (0);
 
-    const [images, setImages] = useState <JSX.Element[]> ();
-    const [thumbnails, setThumbnails] = useState <JSX.Element[]> ();
+    const [images, setImages] = useState <JSX.Element[]> ([]);
+    const [thumbnails, setThumbnails] = useState <JSX.Element[]> ([]);
 
     const imagesArr = [
         {
@@ -104,30 +106,74 @@ function Gallery2 () {
     }
 
     const handleIndex = (next: boolean) => {
-        if (next) {
-            index + 1 >= imagesArr.length ? setIndex(0) : setIndex((index) => index + 1);
-        } else {
-            index - 1 < 0 ? setIndex(imagesArr.length - 1) : setIndex((index) => index - 1);
+        if (enter.current) {
+            enter.current = false;
+            if (next) {
+                direcionNext.current = true;
+                centerIndex + 1 >= imagesArr.length ? setCenterIndex(0) :  setCenterIndex((index) => index + 1);
+            } else {
+                direcionNext.current = false;
+                centerIndex - 1 < 0 ? setCenterIndex(imagesArr.length - 1) : setCenterIndex((index) => index - 1);
+            }
         }
     }
 
+    const handleCenterIndexFromThumbnail = (actualCenter: number, nextCenter: number) => {
+        if (nextCenter > actualCenter) {
+            direcionNext.current = true;
+            setCenterIndex(nextCenter)
+        } else {
+            direcionNext.current = false;
+            setCenterIndex(nextCenter)
+        }
+    }
+    
     useEffect(() => {
         
-        const arrayIdexs = selectIndexOfImges(index, 5);
+        const arrayIdexs = selectIndexOfImges(centerIndex, 5);
         const imagesJSX = arrayIdexs.map((ind, index) => <img src={imagesArr[ind].original} alt="Gallery" key={index} className="galleryImg"/> );
-        const thumbnailsJSX = imagesArr.map((img, index) => <img src={img.thumbnail} alt="Gallery" key={index} className="galleryThumbnailImg"/>);
+        const thumbnailsJSX = imagesArr.map((img, index) => {
+           return index === centerIndex ? 
+           <img src={img.thumbnail} alt="Gallery" key={index} className="galleryThumbnailImg galleryThumbnailImgSelect" onClick={() => handleCenterIndexFromThumbnail(centerIndex, index)}/> :
+           <img src={img.thumbnail} alt="Gallery" key={index} className="galleryThumbnailImg" onClick={() => handleCenterIndexFromThumbnail(centerIndex, index)}/>
+        });
         setImages(imagesJSX);
         setThumbnails(thumbnailsJSX);
+        
+    }, [centerIndex])
+    
+    useEffect(() => {
 
-    }, [index])
+        const directionSign = direcionNext.current ? 1 : -1;
+        
+        if (images.length) {
+            const image: HTMLImageElement | null = document.querySelector(".galleryImg");
+            const imageWidth = image?.offsetWidth as number;
+
+            const slider = document.querySelector(".gallerySliderCont");
+            const animation = slider?.animate([
+                // keyframes
+                { transform: `translateX(${directionSign * imageWidth}px)` },
+                { transform: 'translateX(0)' }
+            ], {
+                // timing options
+                duration: 1000,
+                fill: "forwards",
+                easing: "ease-out"
+            });
+
+            animation?.addEventListener("finish", () => enter.current = true)
+        }
+        
+    }, [images])
     
    
     return (
         <div className="galleryCont flex column">
+            <img src="/images/icons/next.png" alt="Next" className="galleryNextIcon" onClick={() => handleIndex(true)}/>
+            <img src="/images/icons/next.png" alt="Prev" className="galleryPrevIcon" onClick={() => handleIndex(false)}/>
             <div className="gallerySliderCont flex">
                 {images}
-                <img src="/images/icons/next.png" alt="Next" className="galleryNextIcon" onClick={() => handleIndex(true)}/>
-                <img src="/images/icons/next.png" alt="Prev" className="galleryPrevIcon" onClick={() => handleIndex(false)}/>
             </div>
             <div className="galleryThumbnailsCont">
                 {thumbnails}
