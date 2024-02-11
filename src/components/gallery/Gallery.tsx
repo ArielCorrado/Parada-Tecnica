@@ -60,7 +60,7 @@ function Gallery () {
 
     class MyGallery extends React.Component {
         render() {
-            return <ImageGallery items={images} showBullets={true} slideInterval={5000} slideDuration={800} infinite={false}/>;
+            return <ImageGallery items={images} showBullets={true} slideInterval={5000} slideDuration={800} infinite={true}/>;
         }
     }
 

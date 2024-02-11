@@ -1,0 +1,48 @@
+.galleryCont {
+    --alto-thumbnails: 5rem;
+    width: 100%;    
+    height: 100vh;
+    justify-content: flex-start;
+}
+
+.gallerySliderCont {
+    position: relative;
+    height: calc(100% - var(--alto-thumbnails));
+    width: 100%;
+}
+
+.galleryImg {
+    width: 33.33%;
+    min-width: 33.33%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.galleryThumbnailsCont {
+    height: var(--alto-thumbnails);
+    width: 100%;
+}
+
+.galleryThumbnailImg {
+    height: 100%;
+}
+
+.galleryNextIcon, .galleryPrevIcon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    filter: invert(100%);
+    height: 4rem;
+    cursor: pointer;
+}
+
+.galleryPrevIcon {
+    left: 1rem;
+    transform: rotateY(180deg);
+}
+
+.galleryNextIcon {
+    right: 1rem;
+}
+

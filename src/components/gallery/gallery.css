@@ -1,11 +1,3 @@
-@import "~react-image-gallery/styles/css/image-gallery.css";
+/* @import "~react-image-gallery/styles/css/image-gallery.css"; */
 
-.image-gallery-slide {
-    width: 33vw;
-    display: inherit !important;
-}
-
-.image-gallery-image {
-    transform: translateX(100%);
-}
 
