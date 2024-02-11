@@ -1,5 +1,4 @@
 .galleryCont {
-    position: relative;
     --alto-thumbnails: 5rem;
     width: 100%;    
     height: 100vh;
@@ -7,28 +6,29 @@
     overflow: hidden;
 }
 
-.galleryContMaximized {
+.gallerySliderMainCont {
+    position: relative;
+    height: calc(100% - var(--alto-thumbnails));
+    width: 100%;
+}
+
+.gallerySliderMainContMaximixed img:first-child {
+    display: flex;
+}    
+
+.gallerySliderMainContMaximixed {
     position: fixed;
     height: 100%;
     width: 100%;
     left: 0;
     top: 0;
-    /* background-color: black; */
     z-index: 1500;
-}
-
-.galleryContMaximized img:first-child {
-    display: flex;
+    background-color: black;
 }
 
 .gallerySliderCont {
-    height: calc(100% - var(--alto-thumbnails));
     width: 100%;
-}
-
-.gallerySliderContMaximized {
     height: 100%;
-    z-index: 1500;
 }
 
 .galleryImg {

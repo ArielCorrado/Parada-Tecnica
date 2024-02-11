@@ -129,12 +129,10 @@ function Gallery2 () {
     }
 
     const maximizeGallery = () => {
-        const galleryCont = document.querySelector(".galleryCont"); 
-        galleryCont?.classList.add("galleryContMaximized"); 
         document.body.style.overflow = "hidden";
 
-        const gallerySliderCont = document.querySelector(".gallerySliderCont");
-        gallerySliderCont?.classList.add("gallerySliderContMaximized");
+        const gallerySliderMainCont = document.querySelector(".gallerySliderMainCont");
+        gallerySliderMainCont?.classList.add("gallerySliderMainContMaximixed");
 
         const galleryImgs: NodeListOf<HTMLImageElement> = document.querySelectorAll(".galleryImg");
         galleryImgs.forEach((img) => {
@@ -143,13 +141,11 @@ function Gallery2 () {
     }
 
     const minimizeGallery = () => {
-        const galleryCont = document.querySelector(".galleryCont"); 
-        galleryCont?.classList.remove("galleryContMaximized"); 
         document.body.style.overflow = "initial";
-
-        const gallerySliderCont = document.querySelector(".gallerySliderCont");
-        gallerySliderCont?.classList.remove("gallerySliderContMaximized");
-
+        
+        const gallerySliderMainCont = document.querySelector(".gallerySliderMainCont");
+        gallerySliderMainCont?.classList.remove("gallerySliderMainContMaximixed");
+     
         const galleryImgs: NodeListOf<HTMLImageElement> = document.querySelectorAll(".galleryImg");
         galleryImgs.forEach((img) => {
             img.classList.remove("galleryImgMaximixed");
@@ -185,7 +181,7 @@ function Gallery2 () {
                 { transform: 'translateX(0)' }
             ], {
                 // timing options
-                duration: 1000,
+                duration: 800,
                 fill: "forwards",
                 easing: "ease-out"
             });
@@ -198,11 +194,13 @@ function Gallery2 () {
    
     return (
         <div className="galleryCont flex column">
-            <img src="/images/icons/close.png" alt="Next" className="galleryCloseIcon" onClick={minimizeGallery}/>
-            <img src="/images/icons/next.png" alt="Next" className="galleryNextIcon" onClick={() => handleIndex(true)}/>
-            <img src="/images/icons/next.png" alt="Prev" className="galleryPrevIcon" onClick={() => handleIndex(false)}/>
-            <div className="gallerySliderCont flex">
-                {images}
+            <div className="gallerySliderMainCont">
+                <img src="/images/icons/close.png" alt="Next" className="galleryCloseIcon" onClick={minimizeGallery}/>
+                <img src="/images/icons/next.png" alt="Next" className="galleryNextIcon" onClick={() => handleIndex(true)}/>
+                <img src="/images/icons/next.png" alt="Prev" className="galleryPrevIcon" onClick={() => handleIndex(false)}/>
+                <div className="gallerySliderCont flex">
+                    {images}
+                </div>
             </div>
             <div className="galleryThumbnailsCont">
                 {thumbnails}
