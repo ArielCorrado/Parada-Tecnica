@@ -181,8 +181,8 @@ function Gallery2 () {
             const slider = document.querySelector(".gallerySliderCont");
             const animation = slider?.animate([
                 // keyframes
-                { transform: `translateX(${directionSign * imageWidth}px)` },
-                { transform: 'translateX(0)' }
+                { transform: `translateX(${directionSign * imageWidth}px)`, opacity: "1" },
+                { transform: 'translateX(0)', opacity: "1" }
             ], {
                 // timing options
                 duration: 800,
@@ -190,7 +190,7 @@ function Gallery2 () {
                 easing: "ease-out"
             });
 
-            animation?.addEventListener("finish", () => enter.current = true)
+            animation?.addEventListener("finish", () => enter.current = true)                   //Cuando termina la amimacion habilitamos los botones de avanzar y retroceder
         }
              
     }, [images])
@@ -199,10 +199,10 @@ function Gallery2 () {
         const next = () => {
             handleIndex(true)
         }
-        intervalId.current = setInterval(next, 4000);
+        intervalId.current = setInterval(next, 4000);                                           //Autoplay
 
         const gallery = document.querySelector(".galleryCont");
-        gallery?.addEventListener("click", () => clearInterval(intervalId.current));
+        gallery?.addEventListener("click", () => clearInterval(intervalId.current));            //Al hacer click en cualquier lugar de la galeria paramos el autoplay
 
         return () => clearInterval(intervalId.current)
     // eslint-disable-next-line
