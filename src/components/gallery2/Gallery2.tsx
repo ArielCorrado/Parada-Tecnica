@@ -127,11 +127,39 @@ function Gallery2 () {
             setCenterIndex(nextCenter)
         }
     }
+
+    const maximizeGallery = () => {
+        const galleryCont = document.querySelector(".galleryCont"); 
+        galleryCont?.classList.add("galleryContMaximized"); 
+        document.body.style.overflow = "hidden";
+
+        const gallerySliderCont = document.querySelector(".gallerySliderCont");
+        gallerySliderCont?.classList.add("gallerySliderContMaximized");
+
+        const galleryImgs: NodeListOf<HTMLImageElement> = document.querySelectorAll(".galleryImg");
+        galleryImgs.forEach((img) => {
+            img.classList.add("galleryImgMaximixed");
+        })
+    }
+
+    const minimizeGallery = () => {
+        const galleryCont = document.querySelector(".galleryCont"); 
+        galleryCont?.classList.remove("galleryContMaximized"); 
+        document.body.style.overflow = "initial";
+
+        const gallerySliderCont = document.querySelector(".gallerySliderCont");
+        gallerySliderCont?.classList.remove("gallerySliderContMaximized");
+
+        const galleryImgs: NodeListOf<HTMLImageElement> = document.querySelectorAll(".galleryImg");
+        galleryImgs.forEach((img) => {
+            img.classList.remove("galleryImgMaximixed");
+        })
+    }
     
     useEffect(() => {
         
         const arrayIdexs = selectIndexOfImges(centerIndex, 5);
-        const imagesJSX = arrayIdexs.map((ind, index) => <img src={imagesArr[ind].original} alt="Gallery" key={index} className="galleryImg"/> );
+        const imagesJSX = arrayIdexs.map((ind, index) => <img src={imagesArr[ind].original} alt="Gallery" key={index} className="galleryImg" onClick={maximizeGallery}/> );
         const thumbnailsJSX = imagesArr.map((img, index) => {
            return index === centerIndex ? 
            <img src={img.thumbnail} alt="Gallery" key={index} className="galleryThumbnailImg galleryThumbnailImgSelect" onClick={() => handleCenterIndexFromThumbnail(centerIndex, index)}/> :
@@ -170,6 +198,7 @@ function Gallery2 () {
    
     return (
         <div className="galleryCont flex column">
+            <img src="/images/icons/close.png" alt="Next" className="galleryCloseIcon" onClick={minimizeGallery}/>
             <img src="/images/icons/next.png" alt="Next" className="galleryNextIcon" onClick={() => handleIndex(true)}/>
             <img src="/images/icons/next.png" alt="Prev" className="galleryPrevIcon" onClick={() => handleIndex(false)}/>
             <div className="gallerySliderCont flex">
