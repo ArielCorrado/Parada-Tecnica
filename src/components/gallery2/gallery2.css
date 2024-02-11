@@ -113,6 +113,8 @@
     right: 0;
     left: 0;
     margin: auto;
+    z-index: 2500;
+    display: none;
 }
 
 .galleryBullet {
@@ -126,6 +128,10 @@
 
 .galleryBulletSelect {
     background-color: white;
+}
+
+.displayBulletsFlex {
+    display: flex;
 }
 
 @keyframes galleryNext {
@@ -155,6 +161,10 @@
 
     .gallerySliderMainCont {
         height: 100%;
+    }
+
+    .galleryBulletsCont {
+        display: flex;
     }
 }
 

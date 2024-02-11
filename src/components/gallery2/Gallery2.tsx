@@ -136,6 +136,9 @@ function Gallery2 () {
         const gallerySliderMainCont = document.querySelector(".gallerySliderMainCont");
         gallerySliderMainCont?.classList.add("gallerySliderMainContMaximixed");
 
+        const galleryBulletsCont = document.querySelector(".galleryBulletsCont");
+        galleryBulletsCont?.classList.add("displayBulletsFlex")
+
         const galleryImgs: NodeListOf<HTMLImageElement> = document.querySelectorAll(".galleryImg");
         galleryImgs.forEach((img) => {
             img.classList.add("galleryImgMaximixed");
@@ -149,6 +152,9 @@ function Gallery2 () {
         
         const gallerySliderMainCont = document.querySelector(".gallerySliderMainCont");
         gallerySliderMainCont?.classList.remove("gallerySliderMainContMaximixed");
+
+        const galleryBulletsCont = document.querySelector(".galleryBulletsCont");
+        galleryBulletsCont?.classList.remove("displayBulletsFlex");
      
         const galleryImgs: NodeListOf<HTMLImageElement> = document.querySelectorAll(".galleryImg");
         galleryImgs.forEach((img) => {
@@ -210,8 +216,40 @@ function Gallery2 () {
 
         const gallery = document.querySelector(".galleryCont");
         gallery?.addEventListener("click", () => clearInterval(intervalId.current));            //Al hacer click en cualquier lugar de la galeria paramos el autoplay
+        
+        /*********************************** Eventos touch ************************************/
+  
+        let startX: number;
+        let startY: number;
+        let endX: number;
+        let endY: number;
+        const gallerySliderMainCont: HTMLElement | null = document.querySelector(".gallerySliderMainCont");
+        const buttonNext: HTMLButtonElement | null = document.querySelector(".galleryNextIcon");
+        const buttonPrev: HTMLButtonElement | null = document.querySelector(".galleryPrevIcon");
+        const start = (e: TouchEvent) => {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+        }
+
+        const end = (e: TouchEvent) => {
+            endX = e.changedTouches[0].clientX;
+            endY = e.changedTouches[0].clientY;
+            const Ax = endX - startX;
+            const Ay = Math.abs(endY - startY);
+            if (Ax > 50 && Ay < 100) {
+                buttonPrev?.click();
+            } else if (Ax < -50 && Ay < 100) {
+                buttonNext?.click();
+            }
+        }
+
+        gallerySliderMainCont?.addEventListener("touchstart", start);
+        gallerySliderMainCont?.addEventListener("touchend", end);
+
+        /***************************************************************************************/
 
         return () => clearInterval(intervalId.current)
+
     // eslint-disable-next-line
     }, [])
 

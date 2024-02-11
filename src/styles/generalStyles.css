@@ -11,3 +11,8 @@
     padding: 2rem 1rem;
     padding-top: 4rem;
 }
+
+.displayNone {
+    display: none;
+}
+
