@@ -118,7 +118,7 @@ function Gallery2 () {
         }
     }
 
-    const handleCenterIndexFromThumbnail = (actualCenter: number, nextCenter: number) => {
+    const handleCenterIndexFromImage = (actualCenter: number, nextCenter: number) => {
         if (nextCenter > actualCenter) {
             direcionNext.current = true;
             setCenterIndex(nextCenter)
@@ -128,7 +128,7 @@ function Gallery2 () {
         }
     }
 
-    const maximizeGallery = () => {
+    const maximizeGallery = (centerIndex: number, nextIndex: number) => {
         document.body.style.overflow = "hidden";
 
         const gallerySliderMainCont = document.querySelector(".gallerySliderMainCont");
@@ -138,6 +138,8 @@ function Gallery2 () {
         galleryImgs.forEach((img) => {
             img.classList.add("galleryImgMaximixed");
         })
+
+        handleCenterIndexFromImage(centerIndex, nextIndex);             //Seleccionamos imagen central desde imagenes principales
     }
 
     const minimizeGallery = () => {
@@ -155,11 +157,11 @@ function Gallery2 () {
     useEffect(() => {
         
         const arrayIdexs = selectIndexOfImges(centerIndex, 5);
-        const imagesJSX = arrayIdexs.map((ind, index) => <img src={imagesArr[ind].original} alt="Gallery" key={index} className="galleryImg" onClick={maximizeGallery}/> );
+        const imagesJSX = arrayIdexs.map((ind, index) => <img src={imagesArr[ind].original} alt="Gallery" key={index} className="galleryImg" onClick={() => maximizeGallery(centerIndex, ind)}/> );
         const thumbnailsJSX = imagesArr.map((img, index) => {
            return index === centerIndex ? 
-           <img src={img.thumbnail} alt="Gallery" key={index} className="galleryThumbnailImg galleryThumbnailImgSelect" onClick={() => handleCenterIndexFromThumbnail(centerIndex, index)}/> :
-           <img src={img.thumbnail} alt="Gallery" key={index} className="galleryThumbnailImg" onClick={() => handleCenterIndexFromThumbnail(centerIndex, index)}/>
+           <img src={img.thumbnail} alt="Gallery" key={index} className="galleryThumbnailImg galleryThumbnailImgSelect" onClick={() => handleCenterIndexFromImage(centerIndex, index)}/> :
+           <img src={img.thumbnail} alt="Gallery" key={index} className="galleryThumbnailImg" onClick={() => handleCenterIndexFromImage(centerIndex, index)}/>
         });
         setImages(imagesJSX);
         setThumbnails(thumbnailsJSX);

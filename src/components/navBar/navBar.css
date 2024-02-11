@@ -166,6 +166,7 @@
     font-weight: 400;
     justify-content: flex-start;
     font-size: 0.8rem;
+    text-align: left;
 }
 
 .opcion2:hover {
