@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react";
 function Gallery3 () {
 
     const centerIndex = useRef <number> (0);
+    const enter = useRef <boolean> (true);
   
     const [images, setImages] = useState <JSX.Element[]> ([]);
     const [bullets, setBullets] = useState <JSX.Element[]> ([]);
@@ -84,7 +85,7 @@ function Gallery3 () {
         return indexPointer;
     }
   
-    const selectIndexOfImges = (centerImageIndex: number, numberOfImages: number) => {
+    const selectIndexsOfInitialImges = (centerImageIndex: number, numberOfImages: number) => {
 
         if (centerImageIndex < 0) centerImageIndex = imagesArr.length - 1;
         if (centerImageIndex >= imagesArr.length) centerImageIndex = 0;
@@ -103,31 +104,38 @@ function Gallery3 () {
         }
         return arrIndexs;
     }
-        
-    useEffect(() => {
-        
-        const arrayIdexs = selectIndexOfImges(centerIndex.current, 3);
+
+    const setImagesInSlider = (indexOfCenter: number) => {
+        const arrayIdexs = selectIndexsOfInitialImges(indexOfCenter, 3);
         const imagesJSX = arrayIdexs.map((ind, index) => <img src={imagesArr[ind].original} alt="Gallery" key={index} className="galleryImg"/>);
         setImages(imagesJSX);
         
         const bulletsJSX = imagesArr.map((img, index) => {
-            return index === centerIndex.current ?
-            <div key={index} className="galleryBullet galleryBulletSelect"></div> :
-            <div key={index} className="galleryBullet"></div>
+            return index === indexOfCenter ?
+            <div key={index} className="galleryBullet galleryBulletSelect" tabIndex={index} onClick={(e) => selectImagefromThumbnailOrBullet(e)}></div> :
+            <div key={index} className="galleryBullet" tabIndex={index} onClick={(e) => selectImagefromThumbnailOrBullet(e)}></div>
         });
         setBullets(bulletsJSX);
 
         const thumbnailsJSX = imagesArr.map((img, index) => {
-            return index === centerIndex.current ?
+            return index === indexOfCenter ?
                 <img src={img.thumbnail} alt="Gallery" key={index} className="galleryThumbnailImg galleryThumbnailImgSelect" /> :
                 <img src={img.thumbnail} alt="Gallery" key={index} className="galleryThumbnailImg" />
         });
         setThumbnails(thumbnailsJSX);
-      
+
+        centerIndex.current = indexOfCenter;
+    }
+        
+    useEffect(() => {
+       setImagesInSlider(0);                 
     // eslint-disable-next-line
     }, [])
     
     const hanldeMoveImages = (next: boolean) => () => {
+        if (!enter.current) return;
+        enter.current = false;
+
         const gallerySliderCont = document.querySelector(".gallerySliderCont") as HTMLDivElement;
 
         next ? gallerySliderCont.style.justifyContent = "flex-start" : gallerySliderCont.style.justifyContent = "flex-end";
@@ -156,19 +164,37 @@ function Gallery3 () {
             easing: "ease-out"
         });
 
+        centerIndex.current = next ? movePointerInArray(centerIndex.current, 1) : centerIndex.current = movePointerInArray(centerIndex.current, -1);
+
         const removeElement = () => {
             if (next) {
                 gallerySliderCont.childNodes[0].remove();
                 animation.cancel();
-                centerIndex.current = movePointerInArray(centerIndex.current, 1);
             } else {
                 gallerySliderCont.childNodes[gallerySliderCont.childNodes.length - 1].remove();
                 animation.cancel();
-                centerIndex.current = movePointerInArray(centerIndex.current, -1);
             }
+            enter.current = true;
         }
 
         animation?.addEventListener("finish", removeElement)         
+
+        /****** Se coloca un borde de color al thumbnail que corresponda a la imagen actual ******/
+
+        const thumbnails = document.querySelectorAll(".galleryThumbnailImg") as NodeListOf<HTMLImageElement>;
+        thumbnails.forEach((thumbnail) => thumbnail.classList.remove("galleryThumbnailImgSelect"));
+        thumbnails[centerIndex.current].classList.add("galleryThumbnailImgSelect");        
+
+        /****** Se rellena la "bolita" que corresponda a la imagena ctual ******/
+
+        const bullets = document.querySelectorAll(".galleryBullet") as NodeListOf<HTMLDivElement>;
+        bullets.forEach((bullet) => bullet.classList.remove("galleryBulletSelect"));
+        bullets[centerIndex.current].classList.add("galleryBulletSelect");        
+
+    }
+
+    const selectImagefromThumbnailOrBullet = (e: React.BaseSyntheticEvent) => {
+        setImagesInSlider(e.target.tabIndex);
     }
     
     return (
