@@ -112,6 +112,10 @@ function Gallery3 () {
     }, [])
     
     const hanldeMoveImages = (next: boolean) => () => {
+        const gallerySliderCont = document.querySelector(".gallerySliderCont") as HTMLDivElement;
+
+        next ? gallerySliderCont.style.justifyContent = "flex-start" : gallerySliderCont.style.justifyContent = "flex-end";
+
         const newImageIndex = next ? movePointerInArray(centerIndex.current, 2) : movePointerInArray(centerIndex.current, -2);
         const newImageSrc = imagesArr[newImageIndex].original;
         const newImageThumbnail = imagesArr[newImageIndex].thumbnail;
@@ -119,8 +123,8 @@ function Gallery3 () {
         newImage.src = newImageSrc;
         newImage.alt = "Gallery";
         newImage.className = "galleryImg";
-        const gallerySliderCont = document.querySelector(".gallerySliderCont") as HTMLDivElement;
-        gallerySliderCont.appendChild(newImage);
+        
+        next ? gallerySliderCont.appendChild(newImage) : gallerySliderCont.insertBefore(newImage, gallerySliderCont.firstChild);
 
         const img = gallerySliderCont.querySelector(".galleryImg") as HTMLImageElement;
         const imagesWidth = img.offsetWidth;
@@ -141,6 +145,10 @@ function Gallery3 () {
                 gallerySliderCont.childNodes[0].remove();
                 animation.cancel();
                 centerIndex.current = movePointerInArray(centerIndex.current, 1);
+            } else {
+                gallerySliderCont.childNodes[gallerySliderCont.childNodes.length - 1].remove();
+                animation.cancel();
+                centerIndex.current = movePointerInArray(centerIndex.current, -1);
             }
         }
 
