@@ -134,7 +134,7 @@ function Gallery3 () {
 
         const newImageIndex = next ? movePointerInArray(centerIndex.current, 2) : movePointerInArray(centerIndex.current, -2);
         const newImageSrc = imagesArr[newImageIndex].original;
-        const newImageThumbnail = imagesArr[newImageIndex].thumbnail;
+        // const newImageThumbnail = imagesArr[newImageIndex].thumbnail;
         const newImage = document.createElement("img");
         newImage.src = newImageSrc;
         newImage.alt = "Gallery";
