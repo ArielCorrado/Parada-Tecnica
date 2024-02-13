@@ -8,6 +8,8 @@ function Gallery3 () {
   
     const [bullets, setBullets] = useState <JSX.Element[]> ([]);
     const [thumbnails, setThumbnails] = useState <JSX.Element[]> ([]);
+
+    const numberOfImagesInScreen = useRef <number> (3);
   
     const imagesArr = [
         {
@@ -145,7 +147,7 @@ function Gallery3 () {
             thumbnails[indexOfCenter].classList.add("galleryThumbnailImgSelect");
         };
          
-        const arrayIdexs = selectIndexsOfInitialImges(indexOfCenter, 3);
+        const arrayIdexs = selectIndexsOfInitialImges(indexOfCenter, numberOfImagesInScreen.current);
         const imagesHTMLArr = arrayIdexs.map((ind, index) => createImage(ind));
         const gallerySliderCont = document.querySelector(".gallerySliderCont") as HTMLDivElement;
         imagesHTMLArr.forEach((img) => {
@@ -154,10 +156,25 @@ function Gallery3 () {
                            
         centerIndex.current = indexOfCenter;
     }
+
+    const setGallery = () => {
+        if (window.innerWidth < window.innerHeight) {
+            numberOfImagesInScreen.current = 1;
+            setImagesInSlider(centerIndex.current);
+        } else {
+            numberOfImagesInScreen.current = 3;
+            setImagesInSlider(centerIndex.current);
+        }
+    }
         
     useEffect(() => {
-       setImagesInSlider(0);      
+       setGallery();      
        setInitialThumbnailsAndBullets(0);           
+
+       /******************************************************************/
+
+       window.addEventListener("orientationchange", setGallery);
+       window.addEventListener("resize", setGallery);
     // eslint-disable-next-line
     }, [])
 
@@ -175,10 +192,11 @@ function Gallery3 () {
     const hanldeMoveImages = (next: boolean) => () => {
         if (!enter.current) return;
         enter.current = false;
+        const nextImageSteep = Math.ceil(numberOfImagesInScreen.current / 2);
 
         const gallerySliderCont = document.querySelector(".gallerySliderCont") as HTMLDivElement;
         next ? gallerySliderCont.style.justifyContent = "flex-start" : gallerySliderCont.style.justifyContent = "flex-end";
-        const newImageIndex = next ? movePointerInArray(centerIndex.current, 2) : movePointerInArray(centerIndex.current, -2);
+        const newImageIndex = next ? movePointerInArray(centerIndex.current, nextImageSteep) : movePointerInArray(centerIndex.current, -nextImageSteep);
         const newImage = createImage(newImageIndex)
         next ? gallerySliderCont.appendChild(newImage) : gallerySliderCont.insertBefore(newImage, gallerySliderCont.firstChild);
         const img = gallerySliderCont.querySelector(".galleryImg") as HTMLImageElement;
