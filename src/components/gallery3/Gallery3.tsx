@@ -10,6 +10,8 @@ function Gallery3 () {
     const [thumbnails, setThumbnails] = useState <JSX.Element[]> ([]);
 
     const numberOfImagesInScreen = useRef <number> (3);
+
+    const isGalleryMaximized = useRef <boolean> (false);
   
     const imagesArr = [
         {
@@ -122,9 +124,52 @@ function Gallery3 () {
         setThumbnails(thumbnailsJSX);
     }
 
+    const maximizedGallery = (e: any) => {
+        isGalleryMaximized.current = true;
+
+        const indexOfCenterImage = e.target.tabIndex;
+
+        document.body.style.overflow = "hidden";
+        
+        const gallerySliderMainCont = document.querySelector(".gallerySliderMainCont");
+        gallerySliderMainCont?.classList.add("gallerySliderMainContMaximixed");
+
+        const galleryBulletsCont = document.querySelector(".galleryBulletsCont");
+        galleryBulletsCont?.classList.add("displayBulletsFlex")
+
+        const galleryImgs: NodeListOf<HTMLImageElement> = document.querySelectorAll(".galleryImg");
+        galleryImgs.forEach((img) => {
+            img.classList.add("galleryImgMaximixed");
+        })
+
+        numberOfImagesInScreen.current = 1;
+        setImagesInSlider(indexOfCenterImage);
+    }
+
+    const minimizeGallery = () => {
+        if (isGalleryMaximized.current) {
+            
+            document.body.style.overflow = "initial";
+
+            const gallerySliderMainCont = document.querySelector(".gallerySliderMainCont");
+            gallerySliderMainCont?.classList.remove("gallerySliderMainContMaximixed");
+
+            const galleryBulletsCont = document.querySelector(".galleryBulletsCont");
+            galleryBulletsCont?.classList.remove("displayBulletsFlex")
+
+            const galleryImgs: NodeListOf<HTMLImageElement> = document.querySelectorAll(".galleryImg");
+            galleryImgs.forEach((img) => {
+                img.classList.remove("galleryImgMaximixed");
+            })
+
+            isGalleryMaximized.current = false;
+            setGallery();
+        }
+    }
+
     const setImagesInSlider = (indexOfCenter: number) => {
 
-        const images = document.querySelectorAll(".galleryImg");
+        const images = document.querySelectorAll(".galleryImg") as NodeListOf<HTMLImageElement>;
         if (images.length) {
             images.forEach((img) => {
                 img.remove();
@@ -152,8 +197,9 @@ function Gallery3 () {
         const gallerySliderCont = document.querySelector(".gallerySliderCont") as HTMLDivElement;
         imagesHTMLArr.forEach((img) => {
             gallerySliderCont.appendChild(img);
+            img.addEventListener("click", maximizedGallery);    
         });
-                           
+                                       
         centerIndex.current = indexOfCenter;
     }
 
@@ -189,7 +235,10 @@ function Gallery3 () {
         const newImage = document.createElement("img");
         newImage.src = newImageSrc;
         newImage.alt = "Gallery";
-        newImage.className = "galleryImg";
+        newImage.classList.add("galleryImg");
+        newImage.tabIndex= newImageIndex;
+
+        if (isGalleryMaximized.current) newImage.classList.add("galleryImgMaximixed");
 
         return newImage;
     }
@@ -202,7 +251,8 @@ function Gallery3 () {
         const gallerySliderCont = document.querySelector(".gallerySliderCont") as HTMLDivElement;
         next ? gallerySliderCont.style.justifyContent = "flex-start" : gallerySliderCont.style.justifyContent = "flex-end";
         const newImageIndex = next ? movePointerInArray(centerIndex.current, nextImageSteep) : movePointerInArray(centerIndex.current, -nextImageSteep);
-        const newImage = createImage(newImageIndex)
+        const newImage = createImage(newImageIndex);
+        newImage.addEventListener("click", maximizedGallery);  
         next ? gallerySliderCont.appendChild(newImage) : gallerySliderCont.insertBefore(newImage, gallerySliderCont.firstChild);
         const img = gallerySliderCont.querySelector(".galleryImg") as HTMLImageElement;
         const imagesWidth = img.offsetWidth;
@@ -254,7 +304,7 @@ function Gallery3 () {
     return (
         <div className="galleryCont flex column">
             <div className="gallerySliderMainCont">
-                <img src="/images/icons/close.png" alt="Next" className="galleryCloseIcon" />
+                <img src="/images/icons/close.png" alt="Next" className="galleryCloseIcon" onClick={minimizeGallery}/>
                 <img src="/images/icons/next.png" alt="Next" className="galleryNextIcon" onClick={hanldeMoveImages(true)}/>
                 <img src="/images/icons/next.png" alt="Prev" className="galleryPrevIcon" onClick={hanldeMoveImages(false)}/>
                 <div className="gallerySliderCont flex">
