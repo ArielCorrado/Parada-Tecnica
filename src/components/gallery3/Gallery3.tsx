@@ -1,14 +1,15 @@
 import "./gallery3.css";
 import { useEffect, useState, useRef } from "react";   
 
-function Gallery3 () {
+function Gallery3 (props: {numberOfImagesInLandsCape?: 1 | 3 | 5, autoPlay?: boolean, autoPlayInterval?: number, autoPlayChangeTime?: number}) {
 
+    const {numberOfImagesInLandsCape = 1, autoPlay = true, autoPlayInterval = 5000, autoPlayChangeTime = 600} = props         //Valores por defecto de las props
+  
     const centerIndex = useRef <number> (0);
     const enter = useRef <boolean> (true);
     const [bullets, setBullets] = useState <JSX.Element[]> ([]);
     const [thumbnails, setThumbnails] = useState <JSX.Element[]> ([]);
     const setNumberOfImagesInScreen = useRef <number> (0);
-    const numberOfImagesInLandsCape = useRef <number> (3)
     const isGalleryMaximized = useRef <boolean> (false);
   
     const imagesArr = [
@@ -124,15 +125,14 @@ function Gallery3 () {
 
     const maximizedGallery = (e: any) => {
         isGalleryMaximized.current = true;
-
         const indexOfCenterImage = e.target.tabIndex;
 
         document.body.style.overflow = "hidden";
-        
         const gallerySliderMainCont = document.querySelector(".gallerySliderMainCont");
-        gallerySliderMainCont?.classList.add("gallerySliderMainContMaximixed");
 
+        gallerySliderMainCont?.classList.add("gallerySliderMainContMaximixed");
         const galleryImgs: NodeListOf<HTMLImageElement> = document.querySelectorAll(".galleryImg");
+
         galleryImgs.forEach((img) => {
             img.classList.add("galleryImgMaximixed");
         })
@@ -143,7 +143,6 @@ function Gallery3 () {
 
     const minimizeGallery = () => {
         if (isGalleryMaximized.current) {
-            
             document.body.style.overflow = "initial";
 
             const gallerySliderMainCont = document.querySelector(".gallerySliderMainCont");
@@ -210,7 +209,7 @@ function Gallery3 () {
             setNumberOfImagesInScreen.current = 1;
             setImagesInSlider(centerIndex.current);
         } else {
-            setNumberOfImagesInScreen.current = isGalleryMaximized.current ? 1 : numberOfImagesInLandsCape.current;
+            setNumberOfImagesInScreen.current = isGalleryMaximized.current ? 1 : numberOfImagesInLandsCape;
             setImagesInSlider(centerIndex.current);
         }
     }
@@ -245,7 +244,7 @@ function Gallery3 () {
             { transform: `translateX(${(next ? -1 : 1) * imagesWidth}px)`}
         ], {
             // timing options
-            duration: 800,
+            duration: autoPlayChangeTime,
             fill: "forwards",
             easing: "ease-out"
         });
@@ -318,9 +317,13 @@ function Gallery3 () {
         gallerySliderMainCont?.addEventListener("touchend", end);
 
         /***************************************************************************************/
-        const intervalId = setInterval(() => {
-            hanldeMoveImages(true);    
-        }, 5000);
+
+        let intervalId: NodeJS.Timer;
+        if (autoPlay) {
+            intervalId = setInterval(() => {
+                hanldeMoveImages(true);    
+            }, autoPlayInterval);
+        }
 
         const gallery = document.querySelector(".galleryCont");
         gallery?.addEventListener("click", () => clearInterval(intervalId));
@@ -332,6 +335,7 @@ function Gallery3 () {
             window.removeEventListener("resize", setGallery);
             gallerySliderMainCont?.removeEventListener("touchstart", start);
             gallerySliderMainCont?.removeEventListener("touchend", end);
+            clearInterval(intervalId);
         }
 
         // eslint-disable-next-line
