@@ -3,13 +3,13 @@
     width: 100%;    
     height: 100vh;
     justify-content: flex-start;
-    overflow: hidden;
 }
 
 .gallerySliderMainCont {
     position: relative;
     height: calc(100% - var(--alto-thumbnails));
     width: 100%;
+    overflow: hidden;
 }
 
 .gallerySliderMainContMaximixed img:first-child {
@@ -54,6 +54,7 @@
     height: var(--alto-thumbnails);
     width: 100%;
     padding: 0.25rem 0;
+    overflow: auto;
 }
 
 .galleryThumbnailImg {

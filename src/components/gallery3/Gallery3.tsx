@@ -204,6 +204,14 @@ function Gallery3 (props: {numberOfImagesInLandsCape?: 1 | 3 | 5, autoPlay?: boo
         centerIndex.current = indexOfCenter;
     }
 
+    const adjustThumbnailsCont = () => {            //Si el ancho de todos los thumbnails excede el ancho de la pantalla ponemos su contenedor en "flex-start" para que no queden tapados los que estan a la izquierda
+        const thumbnails = document.querySelectorAll(".galleryThumbnailImg") as NodeListOf<HTMLImageElement>;
+        if (thumbnails.length) {
+            const galleryThumbnailsCont = document.querySelector(".galleryThumbnailsCont") as HTMLDivElement;
+            galleryThumbnailsCont.style.justifyContent = thumbnails[thumbnails.length - 1].getBoundingClientRect().right >= window.innerWidth ? "flex-start" : "center";           
+        }
+    }
+
     const setGallery = () => {
         if (window.innerWidth < window.innerHeight) {
             setNumberOfImagesInScreen.current = 1;
@@ -212,6 +220,7 @@ function Gallery3 (props: {numberOfImagesInLandsCape?: 1 | 3 | 5, autoPlay?: boo
             setNumberOfImagesInScreen.current = isGalleryMaximized.current ? 1 : numberOfImagesInLandsCape;
             setImagesInSlider(centerIndex.current);
         }
+        adjustThumbnailsCont();
     }
 
     const hanldeMoveImages = (next: boolean) => {
@@ -277,11 +286,16 @@ function Gallery3 (props: {numberOfImagesInLandsCape?: 1 | 3 | 5, autoPlay?: boo
         bullets[centerIndex.current].classList.add("galleryBulletSelect");        
 
     }
+
+    useEffect(() => {
+        if (thumbnails.length) adjustThumbnailsCont();      //Despues de que se hace un render de los thumbnails se ajusta el contenedor
+    }, [ thumbnails])
+    
         
     useEffect(() => {
         setGallery();
         setInitialThumbnailsAndBullets(0);
-
+        
         /******************************************************************/
 
         window.addEventListener("orientationchange", setGallery);
