@@ -210,73 +210,12 @@ function Gallery3 () {
             setNumberOfImagesInScreen.current = 1;
             setImagesInSlider(centerIndex.current);
         } else {
-            setNumberOfImagesInScreen.current = numberOfImagesInLandsCape.current;
+            setNumberOfImagesInScreen.current = isGalleryMaximized.current ? 1 : numberOfImagesInLandsCape.current;
             setImagesInSlider(centerIndex.current);
         }
     }
-        
-    useEffect(() => {
-        setGallery();
-        setInitialThumbnailsAndBullets(0);
 
-        /******************************************************************/
-
-        window.addEventListener("orientationchange", setGallery);
-        window.addEventListener("resize", setGallery);
-           
-        /*********************** Eventos touch ***************************/
-  
-        let startX: number;
-        let startY: number;
-        let endX: number;
-        let endY: number;
-        const gallerySliderMainCont: HTMLElement | null = document.querySelector(".gallerySliderMainCont");
-        const buttonNext: HTMLButtonElement | null = document.querySelector(".galleryNextIcon");
-        const buttonPrev: HTMLButtonElement | null = document.querySelector(".galleryPrevIcon");
-        const start = (e: TouchEvent) => {
-            startX = e.touches[0].clientX;
-            startY = e.touches[0].clientY;
-        }
-
-        const end = (e: TouchEvent) => {
-            endX = e.changedTouches[0].clientX;
-            endY = e.changedTouches[0].clientY;
-            const Ax = endX - startX;
-            const Ay = Math.abs(endY - startY);
-            if (Ax > 50 && Ay < 100) {
-                buttonPrev?.click();
-            } else if (Ax < -50 && Ay < 100) {
-                buttonNext?.click();
-            }
-        }
-
-        gallerySliderMainCont?.addEventListener("touchstart", start);
-        gallerySliderMainCont?.addEventListener("touchend", end);
-
-        /***************************************************************************************/
-        
-        return () => {
-            window.removeEventListener("orientationchange", setGallery);
-            window.removeEventListener("resize", setGallery);
-        }
-        // eslint-disable-next-line
-    }, [])
-
-    const createImage = (newImageIndex: number) => {
-        const newImageSrc = imagesArr[newImageIndex].original;
-        // const newImageThumbnail = imagesArr[newImageIndex].thumbnail;
-        const newImage = document.createElement("img");
-        newImage.src = newImageSrc;
-        newImage.alt = "Gallery";
-        newImage.classList.add("galleryImg");
-        newImage.tabIndex= newImageIndex;
-
-        if (isGalleryMaximized.current) newImage.classList.add("galleryImgMaximixed");
-
-        return newImage;
-    }
-    
-    const hanldeMoveImages = (next: boolean) => () => {
+    const hanldeMoveImages = (next: boolean) => {
         if (!enter.current) return;
         enter.current = false;
         const nextImageSteep = Math.ceil(setNumberOfImagesInScreen.current / 2);
@@ -339,7 +278,79 @@ function Gallery3 () {
         bullets[centerIndex.current].classList.add("galleryBulletSelect");        
 
     }
+        
+    useEffect(() => {
+        setGallery();
+        setInitialThumbnailsAndBullets(0);
 
+        /******************************************************************/
+
+        window.addEventListener("orientationchange", setGallery);
+        window.addEventListener("resize", setGallery);
+           
+        /*********************** Eventos touch ***************************/
+  
+        let startX: number;
+        let startY: number;
+        let endX: number;
+        let endY: number;
+        const gallerySliderMainCont: HTMLElement | null = document.querySelector(".gallerySliderMainCont");
+        const buttonNext: HTMLButtonElement | null = document.querySelector(".galleryNextIcon");
+        const buttonPrev: HTMLButtonElement | null = document.querySelector(".galleryPrevIcon");
+        const start = (e: TouchEvent) => {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+        }
+
+        const end = (e: TouchEvent) => {
+            endX = e.changedTouches[0].clientX;
+            endY = e.changedTouches[0].clientY;
+            const Ax = endX - startX;
+            const Ay = Math.abs(endY - startY);
+            if (Ax > 50 && Ay < 100) {
+                buttonPrev?.click();
+            } else if (Ax < -50 && Ay < 100) {
+                buttonNext?.click();
+            }
+        }
+
+        gallerySliderMainCont?.addEventListener("touchstart", start);
+        gallerySliderMainCont?.addEventListener("touchend", end);
+
+        /***************************************************************************************/
+        const intervalId = setInterval(() => {
+            hanldeMoveImages(true);    
+        }, 5000);
+
+        const gallery = document.querySelector(".galleryCont");
+        gallery?.addEventListener("click", () => clearInterval(intervalId));
+
+        /***************************************************************************************/
+        
+        return () => {
+            window.removeEventListener("orientationchange", setGallery);
+            window.removeEventListener("resize", setGallery);
+            gallerySliderMainCont?.removeEventListener("touchstart", start);
+            gallerySliderMainCont?.removeEventListener("touchend", end);
+        }
+
+        // eslint-disable-next-line
+    }, [])
+
+    const createImage = (newImageIndex: number) => {
+        const newImageSrc = imagesArr[newImageIndex].original;
+        // const newImageThumbnail = imagesArr[newImageIndex].thumbnail;
+        const newImage = document.createElement("img");
+        newImage.src = newImageSrc;
+        newImage.alt = "Gallery";
+        newImage.classList.add("galleryImg");
+        newImage.tabIndex= newImageIndex;
+
+        if (isGalleryMaximized.current) newImage.classList.add("galleryImgMaximixed");
+
+        return newImage;
+    }
+        
     const selectImagefromThumbnailOrBullet = (e: React.BaseSyntheticEvent) => {
         setImagesInSlider(e.target.tabIndex);
     }
@@ -348,8 +359,8 @@ function Gallery3 () {
         <div className="galleryCont flex column">
             <div className="gallerySliderMainCont">
                 <img src="/images/icons/close.png" alt="Next" className="galleryCloseIcon" onClick={minimizeGallery}/>
-                <img src="/images/icons/next.png" alt="Next" className="galleryNextIcon" onClick={hanldeMoveImages(true)}/>
-                <img src="/images/icons/next.png" alt="Prev" className="galleryPrevIcon" onClick={hanldeMoveImages(false)}/>
+                <img src="/images/icons/next.png" alt="Next" className="galleryNextIcon" onClick={() => hanldeMoveImages(true)}/>
+                <img src="/images/icons/next.png" alt="Prev" className="galleryPrevIcon" onClick={() => hanldeMoveImages(false)}/>
                 <div className="gallerySliderCont flex">
                   
                 </div>
