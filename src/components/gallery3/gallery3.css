@@ -32,8 +32,6 @@
 }
 
 .galleryImg {
-    width: 33.33%;
-    min-width: 33.33%;
     height: 100%;
     object-fit: cover;
     padding: 0 0.25rem;
@@ -126,10 +124,6 @@
 
 .galleryBulletSelect {
     background-color: white;
-}
-
-.displayBulletsFlex {
-    display: flex;
 }
 
 @keyframes galleryNext {

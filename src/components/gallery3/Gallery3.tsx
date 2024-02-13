@@ -5,12 +5,10 @@ function Gallery3 () {
 
     const centerIndex = useRef <number> (0);
     const enter = useRef <boolean> (true);
-  
     const [bullets, setBullets] = useState <JSX.Element[]> ([]);
     const [thumbnails, setThumbnails] = useState <JSX.Element[]> ([]);
-
-    const numberOfImagesInScreen = useRef <number> (3);
-
+    const setNumberOfImagesInScreen = useRef <number> (3);
+    const numberOfImagesInLandsCape = useRef <number> (3)
     const isGalleryMaximized = useRef <boolean> (false);
   
     const imagesArr = [
@@ -134,15 +132,12 @@ function Gallery3 () {
         const gallerySliderMainCont = document.querySelector(".gallerySliderMainCont");
         gallerySliderMainCont?.classList.add("gallerySliderMainContMaximixed");
 
-        const galleryBulletsCont = document.querySelector(".galleryBulletsCont");
-        galleryBulletsCont?.classList.add("displayBulletsFlex")
-
         const galleryImgs: NodeListOf<HTMLImageElement> = document.querySelectorAll(".galleryImg");
         galleryImgs.forEach((img) => {
             img.classList.add("galleryImgMaximixed");
         })
 
-        numberOfImagesInScreen.current = 1;
+        setNumberOfImagesInScreen.current = 1;
         setImagesInSlider(indexOfCenterImage);
     }
 
@@ -153,10 +148,7 @@ function Gallery3 () {
 
             const gallerySliderMainCont = document.querySelector(".gallerySliderMainCont");
             gallerySliderMainCont?.classList.remove("gallerySliderMainContMaximixed");
-
-            const galleryBulletsCont = document.querySelector(".galleryBulletsCont");
-            galleryBulletsCont?.classList.remove("displayBulletsFlex")
-
+ 
             const galleryImgs: NodeListOf<HTMLImageElement> = document.querySelectorAll(".galleryImg");
             galleryImgs.forEach((img) => {
                 img.classList.remove("galleryImgMaximixed");
@@ -192,12 +184,14 @@ function Gallery3 () {
             thumbnails[indexOfCenter].classList.add("galleryThumbnailImgSelect");
         };
          
-        const arrayIdexs = selectIndexsOfInitialImges(indexOfCenter, numberOfImagesInScreen.current);
+        const arrayIdexs = selectIndexsOfInitialImges(indexOfCenter, setNumberOfImagesInScreen.current);
         const imagesHTMLArr = arrayIdexs.map((ind, index) => createImage(ind));
         const gallerySliderCont = document.querySelector(".gallerySliderCont") as HTMLDivElement;
         imagesHTMLArr.forEach((img) => {
-            gallerySliderCont.appendChild(img);
             img.addEventListener("click", maximizedGallery);    
+            img.style.width = `${(1/setNumberOfImagesInScreen.current) * 100}%`;
+            img.style.minWidth = `${(1/setNumberOfImagesInScreen.current) * 100}%`;
+            gallerySliderCont.appendChild(img);
         });
                                        
         centerIndex.current = indexOfCenter;
@@ -205,10 +199,10 @@ function Gallery3 () {
 
     const setGallery = () => {
         if (window.innerWidth < window.innerHeight) {
-            numberOfImagesInScreen.current = 1;
+            setNumberOfImagesInScreen.current = 1;
             setImagesInSlider(centerIndex.current);
         } else {
-            numberOfImagesInScreen.current = 3;
+            setNumberOfImagesInScreen.current = numberOfImagesInLandsCape.current;
             setImagesInSlider(centerIndex.current);
         }
     }
@@ -246,13 +240,15 @@ function Gallery3 () {
     const hanldeMoveImages = (next: boolean) => () => {
         if (!enter.current) return;
         enter.current = false;
-        const nextImageSteep = Math.ceil(numberOfImagesInScreen.current / 2);
+        const nextImageSteep = Math.ceil(setNumberOfImagesInScreen.current / 2);
 
         const gallerySliderCont = document.querySelector(".gallerySliderCont") as HTMLDivElement;
         next ? gallerySliderCont.style.justifyContent = "flex-start" : gallerySliderCont.style.justifyContent = "flex-end";
         const newImageIndex = next ? movePointerInArray(centerIndex.current, nextImageSteep) : movePointerInArray(centerIndex.current, -nextImageSteep);
         const newImage = createImage(newImageIndex);
-        newImage.addEventListener("click", maximizedGallery);  
+        newImage.addEventListener("click", maximizedGallery); 
+        newImage.style.width = `${(1/setNumberOfImagesInScreen.current) * 100}%`; 
+        newImage.style.minWidth = `${(1/setNumberOfImagesInScreen.current) * 100}%`; 
         next ? gallerySliderCont.appendChild(newImage) : gallerySliderCont.insertBefore(newImage, gallerySliderCont.firstChild);
         const img = gallerySliderCont.querySelector(".galleryImg") as HTMLImageElement;
         const imagesWidth = img.offsetWidth;
