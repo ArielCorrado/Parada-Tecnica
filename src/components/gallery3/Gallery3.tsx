@@ -6,7 +6,6 @@ function Gallery3 () {
     const centerIndex = useRef <number> (0);
     const enter = useRef <boolean> (true);
   
-    const [images, setImages] = useState <JSX.Element[]> ([]);
     const [bullets, setBullets] = useState <JSX.Element[]> ([]);
     const [thumbnails, setThumbnails] = useState <JSX.Element[]> ([]);
   
@@ -105,51 +104,83 @@ function Gallery3 () {
         return arrIndexs;
     }
 
-    const setImagesInSlider = (indexOfCenter: number) => {
-        const arrayIdexs = selectIndexsOfInitialImges(indexOfCenter, 3);
-        const imagesJSX = arrayIdexs.map((ind, index) => <img src={imagesArr[ind].original} alt="Gallery" key={index} className="galleryImg"/>);
-        setImages(imagesJSX);
-        
-        const bulletsJSX = imagesArr.map((img, index) => {
+    const setInitialThumbnailsAndBullets = (indexOfCenter: number) => {
+        const bulletsJSX = imagesArr.map((bullet, index) => {
             return index === indexOfCenter ?
             <div key={index} className="galleryBullet galleryBulletSelect" tabIndex={index} onClick={(e) => selectImagefromThumbnailOrBullet(e)}></div> :
             <div key={index} className="galleryBullet" tabIndex={index} onClick={(e) => selectImagefromThumbnailOrBullet(e)}></div>
         });
         setBullets(bulletsJSX);
-
+  
         const thumbnailsJSX = imagesArr.map((img, index) => {
             return index === indexOfCenter ?
-                <img src={img.thumbnail} alt="Gallery" key={index} className="galleryThumbnailImg galleryThumbnailImgSelect" /> :
-                <img src={img.thumbnail} alt="Gallery" key={index} className="galleryThumbnailImg" />
+            <img src={img.thumbnail} alt="Gallery" key={index} tabIndex={index} className="galleryThumbnailImg galleryThumbnailImgSelect" onClick={(e) => selectImagefromThumbnailOrBullet(e)}/> :
+            <img src={img.thumbnail} alt="Gallery" key={index} tabIndex={index} className="galleryThumbnailImg" onClick={(e) => selectImagefromThumbnailOrBullet(e)} />
         });
         setThumbnails(thumbnailsJSX);
+    }
 
+    const setImagesInSlider = (indexOfCenter: number) => {
+
+        const images = document.querySelectorAll(".galleryImg");
+        if (images.length) {
+            images.forEach((img) => {
+                img.remove();
+            });
+        };
+
+        const bullets = document.querySelectorAll(".galleryBullet");
+        if (bullets.length) {
+            bullets.forEach((bullet) => {
+                bullet.classList.remove("galleryBulletSelect");
+            });
+            bullets[indexOfCenter].classList.add("galleryBulletSelect");
+        };
+
+        const thumbnails = document.querySelectorAll(".galleryThumbnailImg");
+        if (thumbnails.length) {
+            thumbnails.forEach((thumbnail) => {
+                thumbnail.classList.remove("galleryThumbnailImgSelect");
+            });
+            thumbnails[indexOfCenter].classList.add("galleryThumbnailImgSelect");
+        };
+         
+        const arrayIdexs = selectIndexsOfInitialImges(indexOfCenter, 3);
+        const imagesHTMLArr = arrayIdexs.map((ind, index) => createImage(ind));
+        const gallerySliderCont = document.querySelector(".gallerySliderCont") as HTMLDivElement;
+        imagesHTMLArr.forEach((img) => {
+            gallerySliderCont.appendChild(img);
+        });
+                           
         centerIndex.current = indexOfCenter;
     }
         
     useEffect(() => {
-       setImagesInSlider(0);                 
+       setImagesInSlider(0);      
+       setInitialThumbnailsAndBullets(0);           
     // eslint-disable-next-line
     }, [])
-    
-    const hanldeMoveImages = (next: boolean) => () => {
-        if (!enter.current) return;
-        enter.current = false;
 
-        const gallerySliderCont = document.querySelector(".gallerySliderCont") as HTMLDivElement;
-
-        next ? gallerySliderCont.style.justifyContent = "flex-start" : gallerySliderCont.style.justifyContent = "flex-end";
-
-        const newImageIndex = next ? movePointerInArray(centerIndex.current, 2) : movePointerInArray(centerIndex.current, -2);
+    const createImage = (newImageIndex: number) => {
         const newImageSrc = imagesArr[newImageIndex].original;
         // const newImageThumbnail = imagesArr[newImageIndex].thumbnail;
         const newImage = document.createElement("img");
         newImage.src = newImageSrc;
         newImage.alt = "Gallery";
         newImage.className = "galleryImg";
-        
-        next ? gallerySliderCont.appendChild(newImage) : gallerySliderCont.insertBefore(newImage, gallerySliderCont.firstChild);
 
+        return newImage;
+    }
+    
+    const hanldeMoveImages = (next: boolean) => () => {
+        if (!enter.current) return;
+        enter.current = false;
+
+        const gallerySliderCont = document.querySelector(".gallerySliderCont") as HTMLDivElement;
+        next ? gallerySliderCont.style.justifyContent = "flex-start" : gallerySliderCont.style.justifyContent = "flex-end";
+        const newImageIndex = next ? movePointerInArray(centerIndex.current, 2) : movePointerInArray(centerIndex.current, -2);
+        const newImage = createImage(newImageIndex)
+        next ? gallerySliderCont.appendChild(newImage) : gallerySliderCont.insertBefore(newImage, gallerySliderCont.firstChild);
         const img = gallerySliderCont.querySelector(".galleryImg") as HTMLImageElement;
         const imagesWidth = img.offsetWidth;
        
@@ -204,7 +235,7 @@ function Gallery3 () {
                 <img src="/images/icons/next.png" alt="Next" className="galleryNextIcon" onClick={hanldeMoveImages(true)}/>
                 <img src="/images/icons/next.png" alt="Prev" className="galleryPrevIcon" onClick={hanldeMoveImages(false)}/>
                 <div className="gallerySliderCont flex">
-                    {images}
+                  
                 </div>
                 <div className="galleryBulletsCont flex">
                     {bullets}
