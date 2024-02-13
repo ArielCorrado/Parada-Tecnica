@@ -38,6 +38,10 @@
     cursor: pointer;
 }
 
+.galleryImgContain {
+    object-fit: contain;
+}
+
 .galleryImgMaximixed {
     width: 100%;
     min-width: 100%;
@@ -71,7 +75,7 @@
     top: 0;
     bottom: 0;
     margin: auto;
-    filter: invert(100%);
+    filter: invert(90%);
     height: 4rem;
     cursor: pointer;
     z-index: 2000;

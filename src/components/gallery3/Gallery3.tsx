@@ -7,7 +7,7 @@ function Gallery3 () {
     const enter = useRef <boolean> (true);
     const [bullets, setBullets] = useState <JSX.Element[]> ([]);
     const [thumbnails, setThumbnails] = useState <JSX.Element[]> ([]);
-    const setNumberOfImagesInScreen = useRef <number> (3);
+    const setNumberOfImagesInScreen = useRef <number> (0);
     const numberOfImagesInLandsCape = useRef <number> (3)
     const isGalleryMaximized = useRef <boolean> (false);
   
@@ -191,6 +191,14 @@ function Gallery3 () {
             img.addEventListener("click", maximizedGallery);    
             img.style.width = `${(1/setNumberOfImagesInScreen.current) * 100}%`;
             img.style.minWidth = `${(1/setNumberOfImagesInScreen.current) * 100}%`;
+            img.classList.remove("galleryImgContain");
+
+            if (window.innerWidth > window.innerHeight && setNumberOfImagesInScreen.current === 1 && !isGalleryMaximized.current) {
+                img.style.width = "100%";
+                img.style.minWidth = "100%";
+                img.classList.add("galleryImgContain");
+            }
+
             gallerySliderCont.appendChild(img);
         });
                                        
@@ -215,7 +223,38 @@ function Gallery3 () {
 
         window.addEventListener("orientationchange", setGallery);
         window.addEventListener("resize", setGallery);
+           
+        /*********************** Eventos touch ***************************/
+  
+        let startX: number;
+        let startY: number;
+        let endX: number;
+        let endY: number;
+        const gallerySliderMainCont: HTMLElement | null = document.querySelector(".gallerySliderMainCont");
+        const buttonNext: HTMLButtonElement | null = document.querySelector(".galleryNextIcon");
+        const buttonPrev: HTMLButtonElement | null = document.querySelector(".galleryPrevIcon");
+        const start = (e: TouchEvent) => {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+        }
 
+        const end = (e: TouchEvent) => {
+            endX = e.changedTouches[0].clientX;
+            endY = e.changedTouches[0].clientY;
+            const Ax = endX - startX;
+            const Ay = Math.abs(endY - startY);
+            if (Ax > 50 && Ay < 100) {
+                buttonPrev?.click();
+            } else if (Ax < -50 && Ay < 100) {
+                buttonNext?.click();
+            }
+        }
+
+        gallerySliderMainCont?.addEventListener("touchstart", start);
+        gallerySliderMainCont?.addEventListener("touchend", end);
+
+        /***************************************************************************************/
+        
         return () => {
             window.removeEventListener("orientationchange", setGallery);
             window.removeEventListener("resize", setGallery);
@@ -249,6 +288,14 @@ function Gallery3 () {
         newImage.addEventListener("click", maximizedGallery); 
         newImage.style.width = `${(1/setNumberOfImagesInScreen.current) * 100}%`; 
         newImage.style.minWidth = `${(1/setNumberOfImagesInScreen.current) * 100}%`; 
+        newImage.classList.remove("galleryImgContain");
+
+        if (window.innerWidth > window.innerHeight && setNumberOfImagesInScreen.current === 1 && !isGalleryMaximized.current) {
+            newImage.style.width = "100%";
+            newImage.style.minWidth = "100%";
+            newImage.classList.add("galleryImgContain");
+        }
+
         next ? gallerySliderCont.appendChild(newImage) : gallerySliderCont.insertBefore(newImage, gallerySliderCont.firstChild);
         const img = gallerySliderCont.querySelector(".galleryImg") as HTMLImageElement;
         const imagesWidth = img.offsetWidth;
@@ -310,7 +357,7 @@ function Gallery3 () {
                     {bullets}
                 </div>
             </div>
-            <div className="galleryThumbnailsCont">
+            <div className="galleryThumbnailsCont flex">
                 {thumbnails}
             </div>
         </div>
