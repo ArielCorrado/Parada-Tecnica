@@ -168,14 +168,19 @@ function Gallery3 () {
     }
         
     useEffect(() => {
-       setGallery();      
-       setInitialThumbnailsAndBullets(0);           
+        setGallery();
+        setInitialThumbnailsAndBullets(0);
 
-       /******************************************************************/
+        /******************************************************************/
 
-       window.addEventListener("orientationchange", setGallery);
-       window.addEventListener("resize", setGallery);
-    // eslint-disable-next-line
+        window.addEventListener("orientationchange", setGallery);
+        window.addEventListener("resize", setGallery);
+
+        return () => {
+            window.removeEventListener("orientationchange", setGallery);
+            window.removeEventListener("resize", setGallery);
+        }
+        // eslint-disable-next-line
     }, [])
 
     const createImage = (newImageIndex: number) => {
