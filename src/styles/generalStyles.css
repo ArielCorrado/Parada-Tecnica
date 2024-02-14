@@ -8,11 +8,15 @@
 }
 
 .seccionsPadding {
-    padding: 2rem 1rem;
-    padding-top: 4rem;
+    padding: 3rem 1rem;
 }
 
 .displayNone {
     display: none;
+}
+
+.iconsTextBold {
+    font-family: 'GothamBold', sans-serif;
+    font-size: 2.5rem;
 }
 

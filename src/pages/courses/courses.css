@@ -1,0 +1,85 @@
+.coursesCalendarCont {
+    margin-bottom: 5rem;
+}
+
+.coursesCalendarIconCont {
+    position: relative;
+    width: 5rem;
+    height: 5rem;
+    margin: 0 0.5rem;
+}
+
+.coursesCalendarIconFirst {
+    filter: brightness(0) invert(0.75) sepia(1) saturate(5) hue-rotate(180deg);
+}
+
+.coursesCalendarIcon {
+    width: 100%;
+    height: 100%;
+}
+
+.coursesCalendarText {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: fit-content;
+    margin: auto;
+    padding-top: 1rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.coursesDescriptionCont {
+    position: relative;
+    border: 3px solid var(--color-borders-1);
+    padding: 4rem;
+    padding-top: 0;
+}
+
+.coursesDescriptionMainTextCont {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: 100%;
+    transform: translateY(50%);
+}
+
+.coursesDescriptionMainText {
+    background-color: white;
+    font-family: var(--font-style-1);
+    font-size: var( --font1-large-size);
+    color: var(--color-web-1);
+}
+
+.coursesDescriptionTitle {
+    margin-top: 3.5rem;
+    font-family: var(--font-style-2);
+}
+
+.coursesDescriptionTextNumber {
+    opacity: 0.65;
+}
+
+.coursesDescriptionTextCursive {
+    font-style: oblique;
+    opacity: 0.85;
+}
+
+.coursesDescriptionBackTextCont {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    transform: translateY(-50%);
+}
+
+.coursesDescriptionBackText {
+    padding: 0.5rem 4rem;
+    font-family: var(--font-style-2);
+    background-color: var(--color-web-4);
+    box-shadow: 0px 0px 13px -1px rgba(0,0,0,0.75);
+    color: var(--color-web-1);
+}

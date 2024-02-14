@@ -2,6 +2,7 @@ import Home from "./home/Home";
 import Activities from "./activities/Activities";
 import Gallery3 from "../components/gallery3/Gallery3";
 import Contact from "./contact/Contact";
+import Courses from "./courses/Courses";
 
 export default function Main() {
     
@@ -16,6 +17,7 @@ export default function Main() {
                 autoPlayChangeTime={600}      /* Indica cuanto tarda la animacion al pasar de una foto a otra (ms), por defecto (600) */  
             />    
             <Contact/>       
+            <Courses/>
         </>
     )
 }

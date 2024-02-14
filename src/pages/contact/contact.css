@@ -1,0 +1,63 @@
+.contactNetworksCont {
+    margin-top: 3rem;
+}
+
+.contactNetworksIcon {
+    height: 2rem;
+    width: 2rem;
+    margin: 0 1rem;
+}
+
+.contactFreeClassCont {
+    height: 20rem;
+    width: 100%;
+    position: relative;
+}
+
+.contactFreeClassImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.contactFreeClassTextCont {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 100%;
+    transform: translateY(-50%);
+    width: 60%;
+    background-color: black;
+    min-height: 6rem;
+}
+
+.contactFreeClassText {
+    color:  var(--text-light-color);
+}
+
+.contactFreeClassTextFree {
+    color: inherit;
+    font-family: var(--font-style-1);
+    font-size: var(--font1-medium-size);
+}
+
+.contactMap {
+    width: 100%;
+    height: 20rem;
+    border: none;
+    margin-top: 6rem;
+}
+
+.contactParadaLogo {
+    margin: 0.5rem 0;
+    filter: invert(100%);
+    transform: scale(50%);
+}
+
+.contactScalaImg {
+    width: 100%;
+    height: 12rem;
+    object-fit: cover;
+    object-position: bottom;
+}
