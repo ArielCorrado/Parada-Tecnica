@@ -186,9 +186,13 @@
     }
     
     .coursesDescriptionMainText {
-        min-width: 90%;
+        min-width: 95%;
         width: min-content;
         line-height: 0.60;
+    }
+
+    .coursesDescriptionMainTextShort {
+        min-width: 70%;
     }
 
     .coursesDescriptionBackText {

@@ -30,7 +30,7 @@ function Courses() {
 
             <div className="coursesDescriptionCont flex column">
                 <div className="coursesDescriptionMainTextCont flex">
-                    <p className="coursesDescriptionMainText">BÁSICO</p>
+                    <p className="coursesDescriptionMainText coursesDescriptionMainTextShort">BÁSICO</p>
                 </div>
                 <p className="coursesDescriptionTitle coursesDescriptionTitleFirst">MODULO 1.</p>
                 <p className="coursesDescriptionText"><span className="coursesDescriptionTextNumber">1.</span> Introducción al equipo de escalada.</p>
