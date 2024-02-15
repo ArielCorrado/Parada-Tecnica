@@ -32,7 +32,7 @@ function Courses() {
                 <div className="coursesDescriptionMainTextCont flex">
                     <p className="coursesDescriptionMainText">BÁSICO</p>
                 </div>
-                <p className="coursesDescriptionTitle">MODULO 1.</p>
+                <p className="coursesDescriptionTitle coursesDescriptionTitleFirst">MODULO 1.</p>
                 <p className="coursesDescriptionText"><span className="coursesDescriptionTextNumber">1.</span> Introducción al equipo de escalada.</p>
                 <p className="coursesDescriptionText"><span className="coursesDescriptionTextNumber">2.</span> Técnica de progresión.</p>
                 <p className="coursesDescriptionText"><span className="coursesDescriptionTextNumber">3.</span> Nudo de encordamieto.</p>
@@ -50,6 +50,34 @@ function Courses() {
                 <div className="coursesDescriptionBackTextCont flex">
                     <p className="coursesDescriptionBackText">VER FECHAS</p>
                 </div>
+            </div>
+
+            <div className="coursesModuleCont flex">
+                <div className="coursesModuleDivIzq flex column">
+                    <p className="coursesModuleText1">PRIMER</p>
+                    <p className="coursesModuleText2">MÓDULO</p>
+                </div>
+                <div className="coursesModuleDivDer flex column">
+                    <p className="coursesModuleDivDerText">6 DE ABRIL | 14H</p>
+                    <p className="coursesModuleDivDerText">22 DE JUNIO | 14H</p>
+                </div>
+                <p className="coursesModuleDay">SÁBADO</p>
+            </div>
+
+            <div className="coursesModuleCont coursesModuleCon2 flex">
+                <div className="coursesModuleDivIzq flex column">
+                    <p className="coursesModuleText1">SEGUNDO</p>
+                    <p className="coursesModuleText2">MÓDULO</p>
+                </div>
+                <div className="coursesModuleDivDer flex column">
+                    <p className="coursesModuleDivDerText">1 DE MAYO | 14H</p>
+                    <p className="coursesModuleDivDerText">6 DE JULIO | 14H</p>
+                </div>
+                <p className="coursesModuleDay coursesModuleDay2">SÁBADO</p>
+            </div>
+
+            <div className="coursesDescriptionBackTextCont coursesDescriptionBackTextContDBlock flex">
+                <p className="coursesDescriptionBackText">!AVISARME NUEVAS FECHAS!</p>
             </div>
 
         </div>

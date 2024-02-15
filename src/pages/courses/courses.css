@@ -1,5 +1,5 @@
 .coursesCalendarCont {
-    margin-bottom: 5rem;
+    margin-bottom: 4rem;
 }
 
 .coursesCalendarIconCont {
@@ -34,8 +34,11 @@
 .coursesDescriptionCont {
     position: relative;
     border: 3px solid var(--color-borders-1);
-    padding: 4rem;
-    padding-top: 0;
+    padding: 3rem;
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+    width: 80%;
+    max-width: 80%;
 }
 
 .coursesDescriptionMainTextCont {
@@ -52,11 +55,16 @@
     font-family: var(--font-style-1);
     font-size: var( --font1-large-size);
     color: var(--color-web-1);
+    line-height: 0.5;
 }
 
 .coursesDescriptionTitle {
     margin-top: 3.5rem;
     font-family: var(--font-style-2);
+}
+
+.coursesDescriptionTitleFirst {
+    margin-top: 0;
 }
 
 .coursesDescriptionTextNumber {
@@ -82,4 +90,120 @@
     background-color: var(--color-web-4);
     box-shadow: 0px 0px 13px -1px rgba(0,0,0,0.75);
     color: var(--color-web-1);
+}
+
+.coursesModuleCont {
+    position: relative;
+    border: 3px solid var(--color-borders-1);
+    padding: 0.5rem 2rem;
+    padding-left: 0;
+    justify-content: space-between;
+    border-left: none;
+    margin-bottom: 2rem;
+}
+
+.coursesModuleDivDer {
+    align-items: flex-end;
+}
+
+.coursesModuleDivDerText {
+    font-family: var(--font-style-2);
+}
+
+.coursesModuleDivIzq {
+    transform: translateX(-50%);
+}
+
+.coursesModuleText1 {
+    font-family: var(--font-style-1);
+    font-size: var( --font1-large-size);
+    color: var(--color-web-1);
+    line-height: 0.75;
+}
+
+.coursesModuleText2 {
+    font-family: var(--font-style-2);
+    color: var(--color-web-1);
+}
+
+.coursesModuleDay {
+    position: absolute;
+    font-size: 1.6rem;
+    font-family: var(--font-style-2);
+    color: var(--color-borders-1);
+    transform: rotateZ(90deg) translateY(-0.9rem) translateX(1.05rem); 
+    transform-origin: right;
+    right: 0;
+    bottom: 0;
+}
+
+.coursesModuleCon2 {
+    transform: rotateY(180deg);
+}
+
+.coursesModuleCon2 p:not(.coursesModuleDay2) {
+    transform: rotateY(180deg);
+}
+
+.coursesModuleDay2 {
+    transform: rotateZ(90deg) translateY(-0.9rem) translateX(-87%) rotateY(180deg); 
+}
+
+.coursesDescriptionBackTextContDBlock {
+    position: initial;
+    left: initial;
+    right: initial;
+    top: initial;
+    transform: initial;
+    margin-top: 0.5rem;
+}
+
+@media only screen and (orientation: portrait) {
+
+    .coursesModuleCont {
+        flex-direction: column;
+    }
+
+    .coursesModuleText1 {
+        font-size: 3rem;
+    }
+
+    .coursesModuleText2 {
+        font-size: 2rem;
+    }
+
+    .coursesDescriptionCont {
+        padding: 3rem 1rem;
+        padding-top: 5rem;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .coursesCalendarIconCont {
+        width: 4rem;
+        height: 4rem;
+        margin: 0 0.25rem;
+    }
+    
+    .coursesDescriptionMainText {
+        min-width: 90%;
+        width: min-content;
+        line-height: 0.60;
+    }
+
+    .coursesDescriptionBackText {
+        padding: 0.5rem 1rem;
+    }
+
+    .coursesModuleDivIzq {
+        margin-bottom: 1rem;
+    }
+
+    .coursesModuleCont {
+        padding: 0.5rem 1rem;
+    }
+
+    .coursesModuleDivDerText {
+        font-size: 1.5rem;
+    }
 }

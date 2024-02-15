@@ -33,20 +33,23 @@
     font-family: var(--font-style-1);
     font-size: var(--font1-medium-size);
     color: var(--color-web-3);
+    margin-top: 1rem;
+    line-height: 0.85;
 }
 
 .activitiesOptionsCont {
-    padding: 1rem 1rem;
-    padding-bottom: 5rem;
+    margin-bottom: 4rem;
 }
 
 .activitiesOptionCont {
-    width: 10rem;
+    width: 12rem;
+    max-width: 100%;
     margin: 1rem;
+    padding: 1rem;
 }
 
 .activitiesOptionsIcon {
-    height: 10rem;
+    width: 100%;
 }
 
 .activitiesOptionText {
@@ -65,4 +68,9 @@
     .activitiesMountainImg {
         opacity: 0.5;
     }
+
+    .activitiesOptionCont {
+        margin: 0;
+    }
+    
 }

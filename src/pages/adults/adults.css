@@ -1,0 +1,40 @@
+.adultsDescriptionCont {
+    border: 3px solid var(--color-borders-3);
+    padding-bottom: 0;
+}
+
+.adultsDescriptionBackDiv {
+    background-color: var(--color-borders-3);
+}
+
+.coursesAdultsTextColor {
+    color: var(--color-borders-3);
+}
+
+.coursesDescriptionAdultsFinalText {
+    font-family: var(--font-style-1);
+    color: var(--color-web-1);
+    font-size: var(--font1-medium-size);
+    margin-top: 1rem;
+}
+
+.adultsBeginnersClassCont {
+    position: relative;
+    border: none;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.adultsBeginnersClassTitle {
+    font-family: var(--font-style-2);
+    font-size: 3rem;
+    color: var(--color-borders-3);
+    margin-bottom: 1rem;
+}
+
+@media only screen and (orientation: portrait) {
+    .adultsBeginnersClassTitle {
+        font-size: 2.5rem;
+    }
+}

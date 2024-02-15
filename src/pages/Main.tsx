@@ -3,6 +3,8 @@ import Activities from "./activities/Activities";
 import Gallery3 from "../components/gallery3/Gallery3";
 import Contact from "./contact/Contact";
 import Courses from "./courses/Courses";
+import Childs from "./childs/Childs";
+import Adults from "./adults/Adults";
 
 export default function Main() {
     
@@ -18,6 +20,8 @@ export default function Main() {
             />    
             <Contact/>       
             <Courses/>
+            <Childs/>
+            <Adults/>
         </>
     )
 }

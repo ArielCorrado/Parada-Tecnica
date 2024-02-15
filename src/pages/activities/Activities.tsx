@@ -38,7 +38,7 @@ export default function Activities() {
             <img src="/images/mountain1.png" alt="Mountain" className="activitiesMountainImg"/>
             <div className="activitiesTitleCont flex column">
                 <p className="activitiesTitle1">Conocé</p>
-                <p className="activitiesTitle2">NUESTRO ESPACIO</p>
+                <p className="activitiesTitle2">Y EXPLORÁ</p>
             </div>
         </div>
     )
