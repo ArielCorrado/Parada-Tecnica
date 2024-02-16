@@ -8,7 +8,7 @@ import "./spinner.css";
 const Spinner = () => {
     return (
         <div className="contSpinners flex">
-            <PuffLoader color="#ffffff" size={100}/>
+            <PuffLoader color="#7a8dc2" size={100}/>
         </div>
     );
 }
@@ -16,7 +16,7 @@ const Spinner = () => {
 const ImageSpinner = () => {
     return (
         <div className="imageSpinner flex">
-            <FadeLoader color="#ffffff"/>
+            <FadeLoader color="#7a8dc2"/>
         </div>
     );
 }
