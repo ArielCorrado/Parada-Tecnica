@@ -59,7 +59,7 @@
 
 .OoSS {
     animation-name: animationOfScroll; 
-    animation-duration: 1s;
+    animation-duration: 0.75s;
     animation-timing-function: ease-out;
     animation-fill-mode: forwards;
 }

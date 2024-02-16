@@ -43,7 +43,7 @@ const NavBar = () => {
                 OoSElementsWf.forEach((element) => {
                     if(((element.getBoundingClientRect().top) < (window.innerHeight))) element.classList.add("OoSwFF");
                 })
-            }, 1000);
+            }, 750);
         }
         window.addEventListener("resize", handleTempo);
         window.addEventListener("orientationchange", handleTempo);
