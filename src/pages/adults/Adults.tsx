@@ -4,12 +4,12 @@ function Adults () {
     return (
         <div className="childsCont seccionsPadding flex column">
 
-            <div className="activitiesOptionCont activitiesOptionContPagesHead flex column">
+            <div className="activitiesOptionCont activitiesOptionContPagesHead flex column OoS" id="adultos">
                 <img src="/images/icons/adultos.png" alt="Niños y adolescentes" className="activitiesOptionsIcon" />
                 <p className="activitiesOptionText iconsTextBold">Adultos</p>
             </div>
 
-            <div className="coursesDescriptionCont adultsDescriptionCont flex column">
+            <div className="coursesDescriptionCont adultsDescriptionCont flex column OoS">
                 <div className="coursesDescriptionMainTextCont flex">
                     <p className="coursesDescriptionMainText">NUESTRA PROPUESTA</p>
                 </div>
@@ -34,7 +34,7 @@ function Adults () {
                 <div className="coursesDescriptionBackDiv adultsDescriptionBackDiv"></div>                        
             </div>
 
-            <div className="coursesDescriptionCont adultsBeginnersClassCont">
+            <div className="coursesDescriptionCont adultsBeginnersClassCont OoS">
                 <p className="adultsBeginnersClassTitle">Clases para principiantes</p>
                 <p> <span className="textBold"> ¿Sos nuevo en el mundo de la escalada y no sabes por dónde
                     empezar? </span> ¡No te preocupes! Unite a nuestras clases diseñadas

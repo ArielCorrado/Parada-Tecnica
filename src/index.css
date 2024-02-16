@@ -42,8 +42,9 @@
 
     --navBar-height: 6rem;
     --navBar-border-lines-color: #3f4555;
-    --color-navbar-hover: #d19f6a;
-    --alto-navbar: 4rem
+    --color-navbar-hover: var(--color-web-4);
+    --alto-navbar: 4rem;
+    --color-navbar: #242831d8;
 }
 
 * {

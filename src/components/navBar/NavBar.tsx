@@ -4,6 +4,8 @@ import "./navBar.css";
 import { SpinnerContext } from "../../context/spinnerContext";
 import { SpinnerContextType } from "../../types/types";
 import waitAllImagesCharged from "../../utils/waitAllImagesCharged";
+import { HashLink } from "react-router-hash-link";
+import { scrollWithoffset } from "../../utils/scrollWithOffset";
 
 const NavBar = () => {
     
@@ -17,11 +19,11 @@ const NavBar = () => {
         const OoS = () => {
             const OoSElements: NodeListOf<HTMLElement> = document.querySelectorAll(".OoS");
             const OoSElementsWf: NodeListOf<HTMLElement> = document.querySelectorAll(".OoSwF");
-            OoSElements.forEach((element) => {          //Mostramos el elemento cuando aparece su primer mitad
-                if(((element.getBoundingClientRect().top ) <= (window.innerHeight  - (element.offsetHeight / 2)))) element.classList.add("OoSS");   
+            OoSElements.forEach((element) => {          //Mostramos el elemento cuando aparece su primer cuarto
+                if(((element.getBoundingClientRect().top ) <= (window.innerHeight  - (element.offsetHeight / 4)))) element.classList.add("OoSS");   
             })
-            OoSElementsWf.forEach((element) => {          //Mostramos el elemento cuando aparece su primer mitad
-                if(((element.getBoundingClientRect().top ) <= (window.innerHeight  - (element.offsetHeight / 2)))) element.classList.add("OoSwFF");   
+            OoSElementsWf.forEach((element) => {          //Mostramos el elemento cuando aparece su primer cuarto
+                if(((element.getBoundingClientRect().top ) <= (window.innerHeight  - (element.offsetHeight / 4)))) element.classList.add("OoSwFF");   
             })
         }
         window.addEventListener("resize", OoS);
@@ -139,7 +141,7 @@ const NavBar = () => {
         const calcularREM = () => {
             if (window.innerWidth >= window.innerHeight) REM = 0.01 * window.innerHeight + 10;
             if (window.innerWidth < window.innerHeight) REM = 0.01 * window.innerWidth + 10;
-            breakPoint = 60 * REM;
+            breakPoint = 70 * REM;
         }
          
         calcularREM();
@@ -187,7 +189,7 @@ const NavBar = () => {
                 menuBajo = false;
             }
         })
-                
+
         // eslint-disable-next-line
     }, []);    
     
@@ -199,9 +201,9 @@ const NavBar = () => {
             <img className="iconoMenu" src="/images/icons/menu.png" alt="Icono Menu"/>
             <div className="tapaMenu"></div>
             <div className="menu flex">
-                <Link className="opcion flex" to="/">Actividades</Link>
-                <Link className="opcion flex" to="/esapcio">Espacio</Link>
-                <Link className="opcion flex" to="/team">Contacto</Link>
+                <HashLink className="opcion flex" to="#actividades" smooth={true} scroll={(e) => scrollWithoffset(e, -40)}>Actividades</HashLink>
+                <HashLink className="opcion flex" to="#espacio" smooth={true} scroll={(e) => scrollWithoffset(e)}>Espacio</HashLink>
+                <HashLink className="opcion flex" to="#contacto" smooth={true} scroll={(e) => scrollWithoffset(e)}>Contacto</HashLink>
                 <Link className="opcion flex" to="/about">Proba una clase gratis</Link>
                 <Link className="opcion flex" to="/contact">Staff</Link>
             </div>

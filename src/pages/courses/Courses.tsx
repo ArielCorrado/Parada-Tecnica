@@ -4,12 +4,12 @@ function Courses() {
     return (
         <div className="coursesCont seccionsPadding flex column">
 
-            <div className="activitiesOptionCont flex column">
+            <div className="activitiesOptionCont flex column OoS" id="cursos">
                 <img src="/images/icons/cursos.png" alt="Cursos" className="activitiesOptionsIcon" />
                 <p className="activitiesOptionText iconsTextBold">Cursos</p>
             </div>   
 
-            <div className="coursesCalendarCont flex">
+            <div className="coursesCalendarCont flex OoS">
                 <div className="coursesCalendarIconCont flex">
                     <img src="/images/icons/calendar.png" alt="Calendar" className="coursesCalendarIcon coursesCalendarIconFirst"/>
                     <p className="coursesCalendarText flex">MAR.</p>
@@ -28,7 +28,7 @@ function Courses() {
                 </div>
             </div>
 
-            <div className="coursesDescriptionCont flex column">
+            <div className="coursesDescriptionCont flex column OoS">
                 <div className="coursesDescriptionMainTextCont flex">
                     <p className="coursesDescriptionMainText coursesDescriptionMainTextShort">BÁSICO</p>
                 </div>
@@ -52,7 +52,7 @@ function Courses() {
                 </div>
             </div>
 
-            <div className="coursesModuleCont flex">
+            <div className="coursesModuleCont flex OoS">
                 <div className="coursesModuleDivIzq flex column">
                     <p className="coursesModuleText1">PRIMER</p>
                     <p className="coursesModuleText2">MÓDULO</p>
@@ -64,7 +64,7 @@ function Courses() {
                 <p className="coursesModuleDay">SÁBADO</p>
             </div>
 
-            <div className="coursesModuleCont coursesModuleCon2 flex">
+            <div className="coursesModuleCont coursesModuleCon2 flex OoS">
                 <div className="coursesModuleDivIzq flex column">
                     <p className="coursesModuleText1">SEGUNDO</p>
                     <p className="coursesModuleText2">MÓDULO</p>
@@ -76,7 +76,7 @@ function Courses() {
                 <p className="coursesModuleDay coursesModuleDay2">SÁBADO</p>
             </div>
 
-            <div className="coursesDescriptionBackTextCont coursesDescriptionBackTextContDBlock flex">
+            <div className="coursesDescriptionBackTextCont coursesDescriptionBackTextContDBlock flex OoS">
                 <p className="coursesDescriptionBackText">!AVISARME NUEVAS FECHAS!</p>
             </div>
 

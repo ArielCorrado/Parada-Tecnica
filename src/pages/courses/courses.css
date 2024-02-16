@@ -60,6 +60,7 @@
 
 .coursesDescriptionTitle {
     margin-top: 3.5rem;
+    margin-bottom: 1rem;
     font-family: var(--font-style-2);
 }
 
@@ -67,8 +68,12 @@
     margin-top: 0;
 }
 
+.coursesDescriptionText {
+    margin-bottom: 0.75rem;
+}
+
 .coursesDescriptionTextNumber {
-    opacity: 0.65;
+    opacity: 0.50;
 }
 
 .coursesDescriptionTextCursive {
@@ -158,18 +163,19 @@
     margin-top: 0.5rem;
 }
 
-@media only screen and (orientation: portrait) {
+@media only screen and (orientation: portrait),
+       only screen and (orientation: landscape) and (max-width: 1000px) {
 
     .coursesModuleCont {
         flex-direction: column;
     }
 
     .coursesModuleText1 {
-        font-size: 3rem;
+        font-size: 4rem;
     }
 
     .coursesModuleText2 {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 
     .coursesDescriptionCont {
@@ -192,7 +198,9 @@
     }
 
     .coursesDescriptionMainTextShort {
-        min-width: 70%;
+        padding: 0 1rem;
+        min-width: min-content;
+        width: min-content;
     }
 
     .coursesDescriptionBackText {
@@ -211,3 +219,26 @@
         font-size: 1.5rem;
     }
 }
+
+@media only screen and (orientation: landscape) and (max-width: 1000px) {
+
+    .coursesModuleText1 {
+        font-size: 5rem;
+    }
+
+    .coursesDescriptionMainText {
+        min-width: 80%;
+        width: min-content;
+        line-height: 0.60;
+    }
+
+    .coursesDescriptionMainTextShort {
+        min-width: min-content;
+        width: min-content;
+    }
+
+    .coursesModuleCont {
+        flex-direction: row;
+    }
+}
+

@@ -374,7 +374,7 @@ function Gallery3 (props: {numberOfImagesInLandsCape?: 1 | 3 | 5, autoPlay?: boo
     }
     
     return (
-        <div className="galleryCont flex column">
+        <div className="galleryCont flex column OoS" id="espacio">
             <div className="gallerySliderMainCont">
                 <img src="/images/icons/close.png" alt="Next" className="galleryCloseIcon" onClick={minimizeGallery}/>
                 <img src="/images/icons/next.png" alt="Next" className="galleryNextIcon" onClick={() => hanldeMoveImages(true)}/>

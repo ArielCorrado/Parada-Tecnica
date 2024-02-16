@@ -6,6 +6,13 @@
     height: 2rem;
     width: 2rem;
     margin: 0 1rem;
+    transition-duration: 0.25s;
+    transition-property: transform;
+    transition-timing-function: ease-out;
+}
+
+.contactNetworksIcon:hover {
+    transform: scale(110%);
 }
 
 .contactFreeClassCont {
@@ -27,9 +34,11 @@
     margin: auto;
     top: 100%;
     transform: translateY(-50%);
-    width: 60%;
+    width: 50rem;
+    max-width: 90%;
     background-color: black;
     min-height: 6rem;
+    padding: 0.5rem;
 }
 
 .contactFreeClassText {
@@ -37,6 +46,7 @@
 }
 
 .contactFreeClassTextFree {
+    margin-left: 1rem;
     color: inherit;
     font-family: var(--font-style-1);
     font-size: var(--font1-medium-size);
@@ -60,4 +70,14 @@
     height: 12rem;
     object-fit: cover;
     object-position: bottom;
+}
+
+@media only screen and (orientation: portrait) {
+    .contactFreeClassText {
+        font-size: 1.5rem;
+    }
+    
+    .contactFreeClassTextFree {
+        font-size: var(--font1-small-size);
+    }
 }

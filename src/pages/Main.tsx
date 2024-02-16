@@ -9,7 +9,7 @@ import Adults from "./adults/Adults";
 export default function Main() {
     
     return (
-        <>
+        <div className="seccionToWaitImages">
             <Home />
             <Activities />
             <Gallery3 
@@ -22,6 +22,6 @@ export default function Main() {
             <Courses/>
             <Childs/>
             <Adults/>
-        </>
+        </div>
     )
 }

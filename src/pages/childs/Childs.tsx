@@ -4,12 +4,12 @@ function Childs() {
     return (
         <div className="childsCont seccionsPadding flex column">
 
-            <div className="activitiesOptionCont activitiesOptionContPagesHead flex column">
+            <div className="activitiesOptionCont activitiesOptionContPagesHead flex column OoS" id="ninos">
                 <img src="/images/icons/ninos.png" alt="Niños y adolescentes" className="activitiesOptionsIcon" />
                 <p className="activitiesOptionText iconsTextBold">Niños y adolescentes</p>
             </div>
 
-            <div className="coursesDescriptionCont childsDescriptionCont flex column">
+            <div className="coursesDescriptionCont childsDescriptionCont flex column OoS">
                 <div className="coursesDescriptionMainTextCont flex">
                     <p className="coursesDescriptionMainText">CLASE PARA CHICOS</p>
                 </div>

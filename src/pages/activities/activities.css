@@ -3,6 +3,7 @@
     width: 100%;
     background-color: white;
     position: relative;
+    padding-bottom: 2rem;
 }
 
 .activitiesTitleCont {
@@ -48,19 +49,34 @@
     padding: 1rem;
 }
 
+.activitiesOptionContHover {
+    transition-duration: 0.25s;
+    transition-timing-function: ease-out;
+    transition-property: transform;
+}
+
+.activitiesOptionContHover:hover {
+    transform: scale(110%);
+}
+
 .activitiesOptionsIcon {
-    width: 100%;
+    width: 10rem;
 }
 
 .activitiesOptionText {
     text-align: left;
 }
 
-.activitiesMountainImg {
+.activitiesMountainImgCont {
     position: absolute;
     left: 0;
     bottom: 0;
     width: 20rem;
+    align-items: flex-end;
+}
+
+.activitiesMountainImg {
+    width: 100%;
 }
 
 @media only screen and (orientation: portrait) {
