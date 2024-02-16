@@ -63,13 +63,13 @@ const NavBar = () => {
                 })
 
                 showSpinner(true);
-                await waitAllImagesCharged();
-                showSpinner(false);
+                // await waitAllImagesCharged();
+                // showSpinner(false);
 
-                componentToWaitImages.classList.add("opacityOnCharge");
-                animations.forEach((animation) => {                                 //Reanudamos las animaciones
-                    animation.play();
-                })
+                // componentToWaitImages.classList.add("opacityOnCharge");
+                // animations.forEach((animation) => {                                 //Reanudamos las animaciones
+                //     animation.play();
+                // })
             }
         }
         checkImages();
