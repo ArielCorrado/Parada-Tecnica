@@ -52,7 +52,7 @@
     padding: 0;
     box-sizing: border-box;
     /* line-height: 1.1; */
-    line-height: initial !important;
+    line-height: 85% !important;
     font-weight: 300;
     list-style: none;
     font-size: 1.75rem;
