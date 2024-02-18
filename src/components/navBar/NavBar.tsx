@@ -19,11 +19,11 @@ const NavBar = () => {
         const OoS = () => {
             const OoSElements: NodeListOf<HTMLElement> = document.querySelectorAll(".OoS");
             const OoSElementsWf: NodeListOf<HTMLElement> = document.querySelectorAll(".OoSwF");
-            OoSElements.forEach((element) => {          //Mostramos el elemento cuando aparece su primer cuarto
-                if(((element.getBoundingClientRect().top ) <= (window.innerHeight  - (element.offsetHeight / 4)))) element.classList.add("OoSS");   
+            OoSElements.forEach((element) => {            //Mostramos el elemento cuando ocupa el 15% de la pantalla o mas
+                if(((element.getBoundingClientRect().top ) <= (window.innerHeight * 0.85))) element.classList.add("OoSS");   
             })
-            OoSElementsWf.forEach((element) => {          //Mostramos el elemento cuando aparece su primer cuarto
-                if(((element.getBoundingClientRect().top ) <= (window.innerHeight  - (element.offsetHeight / 4)))) element.classList.add("OoSwFF");   
+            OoSElementsWf.forEach((element) => {          //Mostramos el elemento cuando ocupa el 15% de la pantalla o mas
+                if(((element.getBoundingClientRect().top ) <= (window.innerHeight * 0.85))) element.classList.add("OoSwFF");   
             })
         }
         window.addEventListener("resize", OoS);

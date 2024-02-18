@@ -2,17 +2,17 @@
 
 @font-face {
     font-family: 'heaters';
-    src: url('../public/fonts/Heaters.otf') format('opentype');   /*font-family: 'heaters', sans-serif;*/
+    src: url('../public/fonts/Heaters.woff2') format("woff2");   /*font-family: 'heaters', sans-serif;*/
 }
 
 @font-face {
     font-family: 'GothamBook';
-    src: url('../public/fonts/GothamBook.ttf') format('opentype');   /*font-family: 'GothamBook', sans-serif;*/
+    src: url('../public/fonts/GothamBook.woff2') format("woff2");   /*font-family: 'GothamBook', sans-serif;*/
 }
 
 @font-face {
     font-family: 'GothamBold';
-    src: url('../public/fonts/GothamBold.ttf') format('opentype');   /*font-family: 'GothamBold', sans-serif;*/
+    src: url('../public/fonts/GothamBold.woff2') format("woff2");   /*font-family: 'GothamBold', sans-serif;*/
 }
 
 :root {
@@ -24,9 +24,7 @@
     --color-borders-2: #D0EDF4;
     --color-borders-3: #B5B3E8;
     
-    /* --font-style-principal: 'GothamBook', sans-serif; */
-    --font-style-principal: 'Poppins', sans-serif;
-
+    --font-style-principal: 'GothamBook', sans-serif;
 
     --font-style-1: 'heaters', sans-serif;
     --font1-small-size: 2.5rem;
@@ -34,7 +32,6 @@
     --font1-large-size: 6.5rem;
         
     --font-style-2: 'GothamBold', sans-serif;
-    --font-style-2: 'Poppins', sans-serif;
     --font2-default-size: 3rem;
 
     --font-style-3: 'GothamBook', sans-serif;
