@@ -51,8 +51,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* line-height: 1.1; */
-    line-height: 85% !important;
+    line-height: 1.1;
     font-weight: 300;
     list-style: none;
     font-size: 1.75rem;
@@ -71,7 +70,8 @@ a {
 }
 
 .flex {
-    display: flex;
+    display: -webkit-flex;
+    /* display: flex; */
     justify-content: center;
     align-items: center;
 }
