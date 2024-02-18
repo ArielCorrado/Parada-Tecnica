@@ -58,6 +58,7 @@
     font-family: var(--font-style-principal);
     color: var(--text-dark-color);
     text-align: center;
+    background-color: transparent;
 }
 
 body {
@@ -101,6 +102,10 @@ a {
 
 .opl {
     object-position: left;
+}
+
+.mb1 {
+    margin-bottom: 1rem;
 }
 
 @media only screen and (orientation: landscape) {
