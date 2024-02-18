@@ -5,7 +5,7 @@ import { scrollWithoffset } from "../../utils/scrollWithOffset";
 export default function Activities() {
     return (
         <div className="activitiesCont seccionsPadding flex column">
-            <div className="activitiesTitleCont flex column mb1 OoS">
+            <div className="activitiesTitleCont flex column mb2 OoS">
                 <p className="activitiesTitle1" id="actividades">Nuestras</p>
                 <p className="activitiesTitle2">ACTIVIDADES</p>
             </div>
