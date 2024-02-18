@@ -58,6 +58,7 @@
     font-family: var(--font-style-principal);
     color: var(--text-dark-color);
     text-align: center;
+    will-change: unset !important;
 }
 
 body {

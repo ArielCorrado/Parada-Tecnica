@@ -48,7 +48,7 @@ function Courses() {
                 <p className="coursesDescriptionText"><span className="coursesDescriptionTextNumber">4.</span> Descuelgue.</p>
 
                 <div className="coursesDescriptionBackTextCont flex">
-                    <p className="coursesDescriptionBackText flex">VER FECHAS</p>
+                    <p className="coursesDescriptionBackText">VER FECHAS</p>
                 </div>
             </div>
 
