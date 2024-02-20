@@ -127,6 +127,9 @@ function Gallery3 (props: {numberOfImagesInLandsCape?: 1 | 3 | 5, autoPlay?: boo
         isGalleryMaximized.current = true;
         const indexOfCenterImage = e.target.tabIndex;
 
+        const contMenu = document.querySelector(".contMenu") as HTMLDivElement;
+        contMenu.style.display = "none";
+        
         document.body.style.overflow = "hidden";
         const gallerySliderMainCont = document.querySelector(".gallerySliderMainCont");
 
@@ -144,6 +147,9 @@ function Gallery3 (props: {numberOfImagesInLandsCape?: 1 | 3 | 5, autoPlay?: boo
     const minimizeGallery = () => {
         if (isGalleryMaximized.current) {
             document.body.style.overflow = "initial";
+
+            const contMenu = document.querySelector(".contMenu") as HTMLDivElement;
+            contMenu.style.display = "flex";
 
             const gallerySliderMainCont = document.querySelector(".gallerySliderMainCont");
             gallerySliderMainCont?.classList.remove("gallerySliderMainContMaximixed");

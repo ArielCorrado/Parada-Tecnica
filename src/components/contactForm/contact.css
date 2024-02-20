@@ -1,0 +1,239 @@
+.contactFormCont {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3000;
+    --ancho-form: 30rem;
+    --height-inputs: 2.5rem;
+    --border-radius: 0.25rem;
+    background-color: #242831fa;
+}
+
+.contactFormCont::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    background-image: url("../../../public/images/homeMain.jpg");
+    background-size: cover;
+    filter: contrast(50%) brightness(25%);
+    z-index: -1;
+}
+
+.contactFormCloseIcon {
+    position: absolute;
+    height: 1.15rem;
+    width: 1.15rem;
+    right: 1rem;
+    top: 1rem;
+    cursor: pointer;
+}
+
+.contFormContacto {
+    width: 100%;
+    height: fit-content;
+    z-index: 100;
+}
+
+.contTituloContacto {
+    grid-area: titulo;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.tituloContacto {
+    color: var(--text-light-color);
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+}
+
+.telEmailCont {
+    margin-bottom: 2rem;
+    width: var(--ancho-form);
+    justify-content: flex-start;
+    max-width: 100%;
+}
+
+.tel-contacto, .email-contacto {
+    justify-content: flex-start;
+}
+
+.tel-contacto h2, .email-contacto h2{
+    color: var(--text-light-color);
+    font-size: 0.925rem;
+    font-weight: 400;
+    opacity: 1;
+    margin-right: 2rem;
+}
+
+.email-contacto h2 {
+    margin: 0;
+}
+
+.tel-contacto {
+    grid-area: contacto_tel;
+}
+
+.imgContactoPhone, .imgContactoEmail {
+    height: 1.35rem;
+    margin-right: 0.5rem;
+}
+
+.email-contacto {
+    grid-area: contacto_email;
+}
+
+.contactForm {
+    --grid-gap: 0.75rem;
+    display: grid;
+    grid-template-areas: "titulo titulo" 
+                         "nombre telefono"
+                         "email email"
+                         "mensaje mensaje";
+    grid-gap: var(--grid-gap);
+    grid-template-columns: calc(50% - var(--grid-gap) / 2) calc(50% - var(--grid-gap) / 2);
+    width: var(--ancho-form);
+    max-width: 90vw;
+}
+
+.contactForm input, .contactForm textarea {
+    padding: 0.5rem 0.5rem;
+    border: none;
+    font-weight: 700;
+    color: var(--color-web-1);
+    text-align: left;
+    letter-spacing: normal;
+    font-size: 0.80rem;
+    font-family: 'Poppins', sans-serif;
+    border-radius: var(--border-radius);
+    align-items: baseline;
+    word-spacing: 0.1rem;
+}
+
+.contactForm input::placeholder, .contactForm textarea::placeholder {
+    font-weight: 300;
+    letter-spacing: 0.1rem;
+    font-weight: 700;
+    opacity: 0.50;
+    text-align: left;
+    font-size: 0.75rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.contactForm input:focus, .contactForm textarea:focus {
+    outline: 3px solid var(--color-web-3);
+}
+
+.contactForm textarea {
+    resize: none;
+}
+
+.formNom {
+    grid-area: nombre;
+    min-height: var(--height-inputs);
+    width: 100%;
+}
+
+.formTel {
+    grid-area: telefono;
+    min-height: var(--height-inputs);
+    width: 100%;
+}
+
+.formEmail {
+    grid-area: email;
+    min-height: var(--height-inputs);
+    width: 100%;
+}
+
+.formEmpresa {
+    grid-area: empresa;
+    min-height: var(--height-inputs);
+    width: 100%;
+}
+
+.formMsj {
+    grid-area: mensaje;
+    height: 10rem;
+    width: 100%;
+}
+
+.contBotonContacto {
+    width: var(--ancho-form);
+    max-width: 90vw;
+}
+
+.formButton {
+    font-size: 0.80rem;
+    font-family: var(--font-style-2);
+    text-transform: uppercase;
+    padding: 1rem 4rem;
+    background-color: var(--color-web-3);
+    border: none;
+    margin-top: 1rem;
+    color: white;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+}
+
+@media only screen and (orientation:portrait) {
+
+    .contactForm input::placeholder, .contactForm textarea::placeholder {
+        font-size: 14px;
+    }
+
+    .contactForm input, .contactForm textarea {
+        font-size: 16px;
+    }
+
+    .divContacto { 
+        width: 50%;
+        clip-path: polygon(0 0, 0% 100%, 100% 100%);
+    }    
+
+    .imgDivContacto {
+        object-position: left top;
+    }
+
+    .seccion-contacto {
+        justify-content: center;
+    }
+
+    .tel-contacto, .email-contacto {
+        margin-bottom: 0.75rem;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+  
+    .tel-contacto h2, .email-contacto h2 {
+        margin-right: 0;
+        font-size: 1rem;
+    }
+
+    .titulo-contacto {
+        margin-top: 4rem;
+    }
+
+    .telEmailCont {
+        justify-content: center;
+        margin-bottom: 3rem;
+    }
+
+    .tel-contacto {
+        margin-bottom: 1rem;
+    }
+
+    .contactForm {
+        --grid-gap: 0.5rem;
+        grid-template-areas: "titulo titulo" 
+                             "nombre telefono"
+                             "email email"
+                             "mensaje mensaje";
+    }
+
+}    

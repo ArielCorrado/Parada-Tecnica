@@ -13,7 +13,7 @@ function Contact () {
                     <a href="https://www.facebook.com/profile.php?id=100093172881580" target="_blank" rel="noreferrer"><img src="/images/icons/facebook.png" alt="Facebook icon" className='contactNetworksIcon'/></a>
                     <a href="https://www.instagram.com/paradatecnica_/" target="_blank" rel="noreferrer"><img src="/images/icons/instagram.png" alt="Instagram icon" className='contactNetworksIcon'/></a>
                     <a href="https://www.tiktok.com/@parada.tecnica" target="_blank" rel="noreferrer"><img src="/images/icons/tiktok.png" alt="Tik Tok icon" className='contactNetworksIcon'/></a>
-                    <a href="https://wa.me/+5492477204949" target="_blank" rel="noreferrer"><img src="/images/icons/ws.png" alt="Whatsapp icon" className='contactNetworksIcon'/></a>
+                    <a href="https://wa.me/+542477204949" target="_blank" rel="noreferrer"><img src="/images/icons/ws.png" alt="Whatsapp icon" className='contactNetworksIcon'/></a>
                 </div>
             </div>
             <div className="contactFreeClassCont OoS">

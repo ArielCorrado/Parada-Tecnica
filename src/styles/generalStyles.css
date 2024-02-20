@@ -20,6 +20,11 @@
     font-size: 2.5rem;
 }
 
+.invert100 {
+    filter: invert(100%);
+}
+
+
 /*************************************************************************/
 
 .seccionToWaitImages {
@@ -73,5 +78,82 @@
     }
 }
 
+/***********************************************************************/
+
+.fadeInIzq {
+    animation-name: fadeInIzq; 
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeInIzq {
+    0% {
+        opacity: 0;
+        transform: translateX(-4rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
 
 
+/******************************* Sweet Alert **************************/
+
+.sweetTitleWithOptions {
+    font-size: 1.5rem;
+}
+
+.swal2-container {
+    z-index: 9500 !important;               /* Para que el spinner no tape el popup */    
+}
+
+.swal2-icon {
+    border-color: var(--color-sweetalert2) !important;
+    transform: scale(65%) !important;
+}
+
+.swal2-x-mark {
+    width: 100%;
+    height: 100%;
+}
+
+.swal2-icon-content {                       /* Para que el texto dentro del icono redondo sea del mismo color que el circulo del icono */
+    color: var(--color-sweetalert2); 
+    font-size: 1rem !important;
+}
+
+.swal2-shown {                              /* Para que no desaparezca el scroll cuando aparace el popup de sweetalert2"*/
+    overflow: auto;
+}
+
+.swal2-title {
+    font-size: 1.25rem;                     /* Titulo */
+}
+
+.swal2-html-container {                     /* Subtitulo */
+    font-size: 1rem !important;
+}
+
+.swal2-popup {                              /* Contenedor */
+    width: 25rem;
+    max-width: 100%;
+    z-index: 2500;
+}
+
+.swal2-confirm {
+    background-color: var(--color-sweetalert2) !important;
+}
+
+.swal2-confirm:focus {
+    outline: none !important;
+}
+
+.swal2-confirm:hover {
+    background-color: var(--color-web-3) !important;
+}
+
+.swal2-height-auto {
+    overflow:  hidden;
+}

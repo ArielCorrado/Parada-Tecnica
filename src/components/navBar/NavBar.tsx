@@ -1,4 +1,4 @@
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 import { Link, useLocation } from 'react-router-dom';
 import "./navBar.css";
 import { SpinnerContext } from "../../context/spinnerContext";
@@ -6,6 +6,7 @@ import { SpinnerContextType } from "../../types/types";
 import waitAllImagesCharged from "../../utils/waitAllImagesCharged";
 import { HashLink } from "react-router-hash-link";
 import { scrollWithoffset } from "../../utils/scrollWithOffset";
+import Contact from "../contactForm/Contact";
 
 const NavBar = () => {
     
@@ -101,8 +102,8 @@ const NavBar = () => {
     }, [thisLocation])
     
 
-    /**********************************************************************************************/
-            
+    /*********************************************************************************************/
+                
     useEffect(() => {
 
         const iconoMenu = document.querySelector(".iconoMenu");
@@ -192,22 +193,39 @@ const NavBar = () => {
 
         // eslint-disable-next-line
     }, []);    
+
+    /*********************************************************************************************/
+
+    const [form, setForm] = useState <JSX.Element> (<></>);
+
+    const hiddeContactForm = () => {
+        document.body.style.overflow = "initial";
+        setForm(<></>);
+    }
+
+    const showContactForm = () => {
+        document.body.style.overflow = "hidden";
+        setForm(<Contact close={hiddeContactForm}/>);
+    }
     
     return (
-        <div className="contMenu flex opacityOnCharge">
-            <div className="navBarContLogoEidioma flex">
-                <Link to="/home" className="navBarContLogo flex"><img src="/images/logo.png" alt="Logo Tropicalia" className="navBarLogo" /></Link>
+        <>
+            {form}
+            <div className="contMenu flex opacityOnCharge">
+                <div className="navBarContLogoEidioma flex">
+                    <Link to="/home" className="navBarContLogo flex"><img src="/images/logo.png" alt="Logo Tropicalia" className="navBarLogo" /></Link>
+                </div>
+                <img className="iconoMenu" src="/images/icons/menu.png" alt="Icono Menu" />
+                <div className="tapaMenu"></div>
+                <div className="menu flex">
+                    <HashLink className="opcion flex" to="#actividades" smooth={true} scroll={(e) => scrollWithoffset(e, -40)}>Actividades</HashLink>
+                    <HashLink className="opcion flex" to="#espacio" smooth={true} scroll={(e) => scrollWithoffset(e)}>Espacio</HashLink>
+                    <div className="opcion flex" onClick={() => showContactForm()}>Contacto</div>
+                    <Link className="opcion flex" to="/">Proba una clase gratis</Link>
+                    <Link className="opcion flex" to="/">Staff</Link>
+                </div>
             </div>
-            <img className="iconoMenu" src="/images/icons/menu.png" alt="Icono Menu"/>
-            <div className="tapaMenu"></div>
-            <div className="menu flex">
-                <HashLink className="opcion flex" to="#actividades" smooth={true} scroll={(e) => scrollWithoffset(e, -40)}>Actividades</HashLink>
-                <HashLink className="opcion flex" to="#espacio" smooth={true} scroll={(e) => scrollWithoffset(e)}>Espacio</HashLink>
-                <HashLink className="opcion flex" to="#contacto" smooth={true} scroll={(e) => scrollWithoffset(e)}>Contacto</HashLink>
-                <Link className="opcion flex" to="/about">Proba una clase gratis</Link>
-                <Link className="opcion flex" to="/contact">Staff</Link>
-            </div>
-        </div>
+        </>
     )  
 }   
 
