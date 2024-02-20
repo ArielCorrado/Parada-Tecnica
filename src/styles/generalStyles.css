@@ -155,5 +155,5 @@
 }
 
 .swal2-height-auto {
-    overflow:  hidden;
+    overflow:  hidden !important;
 }

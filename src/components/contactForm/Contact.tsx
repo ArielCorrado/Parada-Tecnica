@@ -59,7 +59,6 @@ const Contact = (props: {close: () => void}) => {
             showSpinner(false); 
             swalPopUp("Ops!", err instanceof Error ? `Error al enviar el mensaje: ${err.message}` : `Error al enviar el mensaje: problema desconocido`, "error");
         }
-        document.body.style.overflow = "initial";
     }
           
     return (

@@ -14,9 +14,7 @@ const swalPopUp = (title: string, text: string, icon: SweetAlertIcon) => {
             confirmButton: 'sweetConfirmBoton',
         },
     }
-
-    // document.body.style.overflow = "hidden";
-
+ 
     Swal.fire(options);
 }
 
