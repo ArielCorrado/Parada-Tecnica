@@ -17,7 +17,7 @@ function Adults () {
                     Proponemos comenzar tu aventura en la escalada, para aquellos
                     que desean desafiarse a sí mismos y vivir una experiencia
                     emocionante indoor, con nuestros
-                    boulderes y vías de escalada. <br />
+                    bloques y vías de escalada. <br />
                     <span className="textBold coursesAdultsTextColor">Y, ¿por qué no explorar también el mundo outdoor? </span>Te
                     invitamos a alejarte un poco de la rutina diaria y disfrutar de un
                     fin de semana conectado con la naturaleza y con vos mismo.

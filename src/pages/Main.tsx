@@ -5,6 +5,7 @@ import Contact from "./contact/Contact";
 import Courses from "./courses/Courses";
 import Childs from "./childs/Childs";
 import Adults from "./adults/Adults";
+import Climbing from "./climbing/Climbing";
 
 export default function Main() {
     
@@ -22,6 +23,7 @@ export default function Main() {
             <Courses/>
             <Childs/>
             <Adults/>
+            <Climbing/>
         </div>
     )
 }

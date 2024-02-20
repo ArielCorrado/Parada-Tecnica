@@ -28,13 +28,13 @@ export default function Activities() {
                     <img src="/images/icons/adultos.png" alt="Adultos" className="activitiesOptionsIcon" />
                     <p className="activitiesOptionText">Adultos</p>
                 </HashLink>
+                <HashLink className="activitiesOptionCont activitiesOptionContHover flex column OoS" to="/#escalada" scroll={(e) => scrollWithoffset(e)}>
+                    <img src="/images/icons/escala.png" alt="Escalada con cuerda" className="activitiesOptionsIcon" />
+                    <p className="activitiesOptionText">Escalada <br /> con cuerda</p>
+                </HashLink>
                 <div className="activitiesOptionCont activitiesOptionContHover flex column OoS">
                     <img src="/images/icons/salida.png" alt="Salida a la roca" className="activitiesOptionsIcon" />
                     <p className="activitiesOptionText">Salida a <br /> la roca</p>
-                </div>
-                <div className="activitiesOptionCont activitiesOptionContHover flex column OoS">
-                    <img src="/images/icons/escala.png" alt="Escala con cuerda" className="activitiesOptionsIcon" />
-                    <p className="activitiesOptionText">Escala <br /> con cuerda</p>
                 </div>
             </div>
             <div className="activitiesMountainImgCont flex OoS"><img src="/images/mountain1.png" alt="Mountain" className="activitiesMountainImg"/></div>

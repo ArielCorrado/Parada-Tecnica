@@ -23,12 +23,14 @@
     --color-borders-1: #7a8dc285;
     --color-borders-2: #D0EDF4;
     --color-borders-3: #B5B3E8;
+    --color-borders-4: #eee787;
     
     --font-style-principal: 'GothamBook', sans-serif;
 
     --font-style-1: 'heaters', sans-serif;
     --font1-small-size: 2.5rem;
     --font1-medium-size: 3.5rem;
+    --font1-medium2-size: 6rem;
     --font1-large-size: 6.5rem;
         
     --font-style-2: 'GothamBold', sans-serif;

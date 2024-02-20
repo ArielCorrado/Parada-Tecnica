@@ -1,0 +1,7 @@
+.climbingDescriptionCont {
+    border: 3px solid var(--color-borders-4);
+}
+
+.backDivClimbing {
+    background-color: var(--color-borders-4);
+}
