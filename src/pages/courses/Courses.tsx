@@ -1,6 +1,12 @@
 import "./courses.css";
 
 function Courses() {
+
+    const showForm = () => {
+        const navBarContactOption = document.querySelector(".navBarContactOption") as HTMLButtonElement;
+        navBarContactOption.click();
+    }
+
     return (
         <div className="coursesCont seccionsPadding flex column">
 
@@ -102,7 +108,7 @@ function Courses() {
                 <p className="coursesModuleDay coursesModuleDay2">SÁBADO</p>
             </div>
 
-            <div className="coursesDescriptionBackTextCont coursesDescriptionBackTextContDBlock flex OoS">
+            <div className="coursesDescriptionBackTextCont coursesDescriptionBackTextContDBlock flex OoS" onClick={showForm}>
                 <p className="coursesDescriptionBackText">!AVISARME NUEVAS FECHAS!</p>
             </div>
 
