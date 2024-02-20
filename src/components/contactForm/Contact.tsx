@@ -68,7 +68,7 @@ const Contact = (props: {close: () => void}) => {
             <div className="telEmailCont fadeInIzq flex wrap">
                 <div className='tel-contacto flex'>
                     <a href="https://wa.me/+542477204949" target='_blank' rel="noreferrer" className='flex'>
-                        <img src="/images/icons/ws.png" alt="phone" className='imgContactoPhone' />
+                        <img src="/images/icons/ws2.png" alt="phone" className='imgContactoPhone' />
                         <h2>+54 2477 204949</h2>
                     </a>
                 </div>
