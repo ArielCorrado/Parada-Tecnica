@@ -221,8 +221,8 @@ const NavBar = () => {
                     <HashLink className="opcion flex" to="#actividades" smooth={true} scroll={(e) => scrollWithoffset(e, -40)}>Actividades</HashLink>
                     <HashLink className="opcion flex" to="#espacio" smooth={true} scroll={(e) => scrollWithoffset(e)}>Espacio</HashLink>
                     <div className="opcion navBarContactOption flex" onClick={() => showContactForm()}>Contacto</div>
-                    <Link className="opcion flex" to="/">Proba una clase gratis</Link>
-                    <Link className="opcion flex" to="/">Staff</Link>
+                    <div className="opcion flex">Proba una clase gratis</div>
+                    <div className="opcion flex">Staff</div>
                 </div>
             </div>
         </>
