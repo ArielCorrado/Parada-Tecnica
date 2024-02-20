@@ -121,7 +121,7 @@
 
 .swal2-icon-content {                       /* Para que el texto dentro del icono redondo sea del mismo color que el circulo del icono */
     color: var(--color-sweetalert2); 
-    font-size: 1rem !important;
+    font-size: 5rem !important;
 }
 
 .swal2-shown {                              /* Para que no desaparezca el scroll cuando aparace el popup de sweetalert2"*/
