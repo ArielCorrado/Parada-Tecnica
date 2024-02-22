@@ -1,4 +1,4 @@
-import { useEffect, useContext, useState } from "react";
+import { useEffect, useContext/*, useState */} from "react";
 import { Link, useLocation } from 'react-router-dom';
 import "./navBar.css";
 import { SpinnerContext } from "../../context/spinnerContext";
@@ -6,7 +6,7 @@ import { SpinnerContextType } from "../../types/types";
 import waitAllImagesCharged from "../../utils/waitAllImagesCharged";
 import { HashLink } from "react-router-hash-link";
 import { scrollWithoffset } from "../../utils/scrollWithOffset";
-import Contact from "../contactForm/Contact";
+// import Contact from "../contactForm/Contact";
 
 const NavBar = () => {
     
@@ -196,21 +196,21 @@ const NavBar = () => {
 
     /*********************************************************************************************/
 
-    const [form, setForm] = useState <JSX.Element> (<></>);
+    // const [form, setForm] = useState <JSX.Element> (<></>);
 
-    const hiddeContactForm = () => {
-        document.body.style.overflow = "initial";
-        setForm(<></>);
-    }
+    // const hiddeContactForm = () => {
+    //     document.body.style.overflow = "initial";
+    //     setForm(<></>);
+    // }
 
-    const showContactForm = () => {
-        document.body.style.overflow = "hidden";
-        setForm(<Contact close={hiddeContactForm}/>);
-    }
+    // const showContactForm = () => {
+    //     document.body.style.overflow = "hidden";
+    //     setForm(<Contact close={hiddeContactForm}/>);
+    // }
     
     return (
         <>
-            {form}
+            {/* {form} */}
             <div className="contMenu flex opacityOnCharge">
                 <div className="navBarContLogoEidioma flex">
                     <Link to="/home" className="navBarContLogo flex"><img src="/images/logo.png" alt="Logo Tropicalia" className="navBarLogo" /></Link>
@@ -220,7 +220,7 @@ const NavBar = () => {
                 <div className="menu flex">
                     <HashLink className="opcion flex" to="#actividades" smooth={true} scroll={(e) => scrollWithoffset(e, -40)}>Actividades</HashLink>
                     <HashLink className="opcion flex" to="#espacio" smooth={true} scroll={(e) => scrollWithoffset(e)}>Espacio</HashLink>
-                    <div className="opcion navBarContactOption flex" onClick={() => showContactForm()}>Contacto</div>
+                    <a className="opcion navBarContactOption flex" /*onClick={() => showContactForm()}*/ href="https://wa.me/+542477204949" target='_blank' rel="noreferrer">Contacto</a>
                     <div className="opcion flex">Proba una clase gratis</div>
                     <div className="opcion flex">Staff</div>
                 </div>

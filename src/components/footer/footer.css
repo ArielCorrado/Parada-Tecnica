@@ -1,0 +1,92 @@
+.footerCont {
+    align-items: flex-start;
+    width: 100%;
+    padding: 0 5vw;
+    margin-top: -2rem;
+}
+
+.logoFooterCont  {
+    transform-origin: bottom left;
+}
+
+.logoFooter {
+    filter: invert(100%);
+}
+
+.footerDescCont {
+    padding: 1rem;
+    align-items: flex-start;
+    padding-left: 0;
+}
+
+.footerLine {
+    width: 100%;
+    height: 10px;
+    background-color: var(--color-web-2);
+}
+
+.footerNetworksCont {
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem 0;
+}
+
+.footerNetworkCont {
+    margin: 0.5rem 0;
+    justify-content: flex-start;
+}
+
+.footerNetworksCont a:first-child {
+   margin-left: 0;
+}
+
+.footerIcons {
+    height: 1.25rem;
+    margin-right: 0.5rem;
+}
+
+.footerNetworksText {
+    font-size: 1rem;
+    font-weight: bolder;
+}
+
+@media only screen and (orientation: portrait) {
+
+    .footerDescCont {
+        margin-top: -0.75rem;
+    }
+
+    .footerNetworkCont {
+       min-width: 9.5rem; 
+    }
+
+    .footerCont {
+        padding: 0 2.5vw;
+    }
+
+    .footerIcons {
+        padding-left: 0;
+    }
+}
+
+@media only screen and (orientation: landscape) and (max-width: 1000px) {
+
+    .footerNetworksCont {
+        justify-content: flex-start;
+    }
+
+    .footerNetworkCont {
+        min-width: 11rem;
+    }
+
+    .footerIcons {
+        padding-left: 0;
+    }
+    
+}
+
+@media only screen and (orientation: landscape) and (min-width: 1900px) {
+    .footerCont {
+        padding: 0 10vw;
+    }
+}

@@ -6,6 +6,7 @@ import { SpinnerContextType } from "./types/types";
 import { SpinnerContext } from "./context/spinnerContext";
 import Main from "./pages/Main";
 import WhatsAppFloating from "./components/whatsAppFloating/WhatsAppFloating";
+import Footer from "./components/footer/Footer";
 
 function App() {
     const { spinner } = useContext <SpinnerContextType> (SpinnerContext);
@@ -19,6 +20,7 @@ function App() {
                 <Route path="*" element={<Navigate to="/"/>}/>
             </Routes>
             <WhatsAppFloating/>
+            <Footer/>
         </BrowserRouter>
     );
 }

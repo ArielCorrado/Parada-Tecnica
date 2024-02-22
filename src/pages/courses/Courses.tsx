@@ -22,7 +22,7 @@ function Courses() {
                 </div>
                 <div className="coursesCalendarIconCont flex">
                     <img src="/images/icons/calendar.png" alt="Calendar" className="coursesCalendarIcon"/>
-                    <p className="coursesCalendarText flex">MAY.</p>
+                    <p className="coursesCalendarText flex">ABR.</p>
                 </div>
                 <div className="coursesCalendarIconCont flex">
                     <img src="/images/icons/calendar.png" alt="Calendar" className="coursesCalendarIcon"/>
@@ -30,7 +30,7 @@ function Courses() {
                 </div>
                 <div className="coursesCalendarIconCont flex">
                     <img src="/images/icons/calendar.png" alt="Calendar" className="coursesCalendarIcon"/>
-                    <p className="coursesCalendarText flex">SEP.</p>
+                    <p className="coursesCalendarText flex">AGO.</p>
                 </div>
             </div>
 
