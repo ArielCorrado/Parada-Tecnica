@@ -65,9 +65,9 @@ const NavBar = () => {
 
                 showSpinner(true);
                 await waitAllImagesCharged();
-                showSpinner(false);
+                // showSpinner(false);
 
-                componentToWaitImages.classList.add("opacityOnCharge");
+                // componentToWaitImages.classList.add("opacityOnCharge");
                 animations.forEach((animation) => {                                 //Reanudamos las animaciones
                     animation.play();
                 })
