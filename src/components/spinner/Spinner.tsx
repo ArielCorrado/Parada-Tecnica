@@ -2,11 +2,16 @@
 // https://www.davidhu.io/react-spinners/
 
 import PuffLoader from "react-spinners/PuffLoader";
-import FadeLoader from "react-spinners/FadeLoader";
 import "./spinner.css";
+import { useEffect } from "react";
 
 const Spinner = () => {
     document.body.style.overflow = "hidden";
+    
+    useEffect(() => {
+        return () => {document.body.style.overflow = "initial"};
+    }, []) 
+    
     return (
         <div className="contSpinners flex">
             <PuffLoader color="#ffffff" size={100}/>
@@ -14,12 +19,4 @@ const Spinner = () => {
     );
 }
 
-const ImageSpinner = () => {
-    return (
-        <div className="imageSpinner flex">
-            <FadeLoader color="#7a8dc2"/>
-        </div>
-    );
-}
-
-export {Spinner, ImageSpinner};
+export {Spinner};
