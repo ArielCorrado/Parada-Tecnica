@@ -13,24 +13,17 @@ function Adults () {
                 <div className="coursesDescriptionMainTextCont flex">
                     <p className="coursesDescriptionMainText">NUESTRA PROPUESTA</p>
                 </div>
-                <p className="coursesDescriptionText"> 
-                    Proponemos comenzar tu aventura en la escalada, para aquellos
-                    que desean desafiarse a sí mismos y vivir una experiencia
-                    emocionante indoor, con nuestros
-                    bloques y vías de escalada. <br />
-                    <span className="textBold coursesAdultsTextColor">Y, ¿por qué no explorar también el mundo outdoor? </span>Te
-                    invitamos a alejarte un poco de la rutina diaria y disfrutar de un
-                    fin de semana conectado con la naturaleza y con vos mismo.
-                </p>
-                <br />
-                <p className="coursesDescriptionText">
-                    <span className="textBold"> Descubrí la posibilidad de cursos que ofrecemos para que
-                    puedas profundizar en este fascinante mundo. </span> Informate más
-                    acerca de nuestras opciones y preparate para vivir experiencias
-                    que te desafiarán física y mentalmente mientras te conectas con
-                    la belleza natural que nos rodea.
-                </p>
-                <p className="coursesDescriptionAdultsFinalText">!LA AVENTURA TE ESPERA!</p>
+                    <p className="coursesDescriptionText"> 
+                        Que comiences tu aventura en la escalada. Es ideal para quienes desean desafiarse a sí mismos y vivir una experiencia emocionante. <br />    
+                        Esto es posible: tenés la opción de venir libre a escalar vías o bloques, si nunca tuviste experiencia en este deporte o simplemente lo preferís, 
+                        <a className="textBold coursesAdultsTextColor" href="https://wa.me/+542477204949" target='_blank' rel="noreferrer"> súmate a las clases guiadas. </a>
+                    </p>
+                    <br />
+                    <p className="coursesDescriptionText">
+                        Y además podes coparte con los viajes que realizamos todos los meses, en los que te desconectas para conectar 
+                        con vos mismo, y con la naturaleza. <span className="textBold">Ponete en contacto con nosotros!</span>
+                    </p>
+                    <p className="coursesDescriptionAdultsFinalText">!LA AVENTURA TE ESPERA!</p>
                 <div className="coursesDescriptionBackDiv adultsDescriptionBackDiv"></div>                        
             </div>
 
