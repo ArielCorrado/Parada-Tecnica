@@ -2,8 +2,8 @@ import "./footer.css";
 
 function Footer() {
     return (
-        <div className="footerCont flex column">
-            <div className="flex contactParadaLogo logoFooterCont OoS">
+        <div className="footerCont flex column OoS">
+            <div className="flex contactParadaLogo logoFooterCont">
                 <img src="/images/logo2.png" alt="Logo" className="homeMainLogo logoFooter" />
                 <div className="homeMainDivider"></div>
                 <div className="homeMainTexts flex column">
