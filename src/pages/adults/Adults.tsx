@@ -21,7 +21,7 @@ function Adults () {
                     <br />
                     <p className="coursesDescriptionText">
                         Y además podes coparte con los viajes que realizamos todos los meses, en los que te desconectas para conectar 
-                        con vos mismo, y con la naturaleza. <span className="textBold">Ponete en contacto con nosotros!</span>
+                        con vos mismo, y con la naturaleza. <a className="textBold" href="https://wa.me/+542477204949" target='_blank' rel="noreferrer">Ponete en contacto con nosotros!</a>
                     </p>
                     <p className="coursesDescriptionAdultsFinalText">!LA AVENTURA TE ESPERA!</p>
                 <div className="coursesDescriptionBackDiv adultsDescriptionBackDiv"></div>                        
