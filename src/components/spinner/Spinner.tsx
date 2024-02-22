@@ -6,9 +6,10 @@ import FadeLoader from "react-spinners/FadeLoader";
 import "./spinner.css";
 
 const Spinner = () => {
+    document.body.style.overflow = "hidden";
     return (
         <div className="contSpinners flex">
-            <PuffLoader color="#7a8dc2" size={100}/>
+            <PuffLoader color="#ffffff" size={100}/>
         </div>
     );
 }

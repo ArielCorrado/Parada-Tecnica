@@ -4,7 +4,8 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 9000;
+    z-index: 900;
+    background-color: #4a5266;
 }
 
 .imageSpinner {
