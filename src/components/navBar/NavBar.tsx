@@ -19,12 +19,8 @@ const NavBar = () => {
 
         const OoS = () => {
             const OoSElements: NodeListOf<HTMLElement> = document.querySelectorAll(".OoS");
-            const OoSElementsWf: NodeListOf<HTMLElement> = document.querySelectorAll(".OoSwF");
             OoSElements.forEach((element) => {            //Mostramos el elemento cuando ocupa el 15% de la pantalla o mas
                 if(((element.getBoundingClientRect().top ) <= (window.innerHeight * 0.85))) element.classList.add("OoSS");   
-            })
-            OoSElementsWf.forEach((element) => {          //Mostramos el elemento cuando ocupa el 15% de la pantalla o mas
-                if(((element.getBoundingClientRect().top ) <= (window.innerHeight * 0.85))) element.classList.add("OoSwFF");   
             })
         }
         window.addEventListener("resize", OoS);
@@ -37,12 +33,8 @@ const NavBar = () => {
             clearTimeout(tempo);  
             tempo = setTimeout(() => {
                 const OoSElements = document.querySelectorAll(".OoS");
-                const OoSElementsWf = document.querySelectorAll(".OoSwF");
                 OoSElements.forEach((element) => {
                     if(((element.getBoundingClientRect().top) < (window.innerHeight))) element.classList.add("OoSS");
-                })
-                OoSElementsWf.forEach((element) => {
-                    if(((element.getBoundingClientRect().top) < (window.innerHeight))) element.classList.add("OoSwFF");
                 })
             }, 750);
         }
@@ -65,39 +57,16 @@ const NavBar = () => {
 
                 showSpinner(true);
                 await waitAllImagesCharged();
-                // showSpinner(false);
+                showSpinner(false);
 
-                // componentToWaitImages.classList.add("opacityOnCharge");
+                componentToWaitImages.classList.add("opacityOnCharge");
                 animations.forEach((animation) => {                                 //Reanudamos las animaciones
                     animation.play();
                 })
             }
         }
         checkImages();
-
-
-        /******************************** NavBar dinamic colorizer per route **************************/
-
-        const navBarNamesRef = [
-            ["/home", "home"], ["/team", "equipo"], ["/contact", "contacto"], ["/about", "nosotros"], ["/portfolio", "portfolio"]  //Posicion 0: texto que tiene que tener la ruta, posicion 1: texto que tiene que tener la opcion del navbar
-        ]    
-
-        const actualOptionsArray = navBarNamesRef.find((el) => thisLocation.pathname.includes(el[0]));
-        const navBarOptions = document.querySelectorAll(".opcion");
-        for (const option of navBarOptions) {
-            option.classList.remove("navBarOptionColorOn");
-        }
-        if (actualOptionsArray) {
-            for (const option of navBarOptions) {
-                if (option.innerHTML.toString().toLowerCase().includes(actualOptionsArray[1])) {
-                    option.classList.add("navBarOptionColorOn");
-                }
-            }
-        }
-
-        /*** Al cambiar de pagina el scroll se va arriba ***/
-        window.scrollTo({top: 0}) 
-        /***************************************************/
+      
         // eslint-disable-next-line
     }, [thisLocation])
     
