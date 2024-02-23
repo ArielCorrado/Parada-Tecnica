@@ -111,7 +111,7 @@ const NavBar = () => {
         const calcularREM = () => {
             if (window.innerWidth >= window.innerHeight) REM = 0.01 * window.innerHeight + 10;
             if (window.innerWidth < window.innerHeight) REM = 0.01 * window.innerWidth + 10;
-            breakPoint = 70 * REM;
+            breakPoint = 65 * REM;
         }
          
         calcularREM();
@@ -190,8 +190,8 @@ const NavBar = () => {
                     <HashLink className="opcion flex" to="#actividades" smooth={true} scroll={(e) => scrollWithoffset(e, -40)}>Actividades</HashLink>
                     <HashLink className="opcion flex" to="#espacio" smooth={true} scroll={(e) => scrollWithoffset(e)}>Espacio</HashLink>
                     <a className="opcion navBarContactOption flex" /*onClick={() => showContactForm()}*/ href="https://wa.me/+542477204949" target='_blank' rel="noreferrer">Contacto</a>
-                    <div className="opcion flex">Proba una clase gratis</div>
-                    <div className="opcion flex">Staff</div>
+                    <a className="opcion flex" href="https://wa.me/+542477204949" target='_blank' rel="noreferrer">Proba una clase gratis</a>
+                    {/*<div className="opcion flex">Staff</div>*/}
                 </div>
             </div>
         </>
