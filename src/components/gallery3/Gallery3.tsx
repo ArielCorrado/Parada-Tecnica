@@ -15,55 +15,55 @@ function Gallery3 (props: {numberOfImagesInLandsCape?: 1 | 3 | 5, autoPlay?: boo
     const imagesArr = [
         {
             original: "/images/gallery/0.jpeg",
-            thumbnail: "/images/gallery/0.jpeg",
+            thumbnail: "/images/gallery/0b.jpg",
         },
         {
             original: "/images/gallery/1.jpeg",
-            thumbnail: "/images/gallery/1.jpeg",
+            thumbnail: "/images/gallery/1b.jpg",
         },
         {
             original: "/images/gallery/2.jpeg",
-            thumbnail: "/images/gallery/2.jpeg",
+            thumbnail: "/images/gallery/2b.jpg",
         },
         {
             original: "/images/gallery/3.jpeg",
-            thumbnail: "/images/gallery/3.jpeg",
+            thumbnail: "/images/gallery/3b.jpg",
         },
         {
             original: "/images/gallery/4.jpeg",
-            thumbnail: "/images/gallery/4.jpeg",
+            thumbnail: "/images/gallery/4b.jpg",
         },
         {
             original: "/images/gallery/5.jpeg",
-            thumbnail: "/images/gallery/5.jpeg",
+            thumbnail: "/images/gallery/5b.jpg",
         },
         {
             original: "/images/gallery/6.jpeg",
-            thumbnail: "/images/gallery/6.jpeg",
+            thumbnail: "/images/gallery/6b.jpg",
         },
         {
             original: "/images/gallery/7.jpeg",
-            thumbnail: "/images/gallery/7.jpeg",
+            thumbnail: "/images/gallery/7b.jpg",
         },
         {
             original: "/images/gallery/8.jpeg",
-            thumbnail: "/images/gallery/8.jpeg",
+            thumbnail: "/images/gallery/8b.jpg",
         },
         {
             original: "/images/gallery/9.jpeg",
-            thumbnail: "/images/gallery/9.jpeg",
+            thumbnail: "/images/gallery/9b.jpg",
         },
         {
             original: "/images/gallery/10.jpeg",
-            thumbnail: "/images/gallery/10.jpeg",
+            thumbnail: "/images/gallery/10b.jpg",
         },
         {
             original: "/images/gallery/11.jpeg",
-            thumbnail: "/images/gallery/11.jpeg",
+            thumbnail: "/images/gallery/11b.jpg",
         },
         {
             original: "/images/gallery/12.jpeg",
-            thumbnail: "/images/gallery/12.jpeg",
+            thumbnail: "/images/gallery/12b.jpg",
         },
     ];
 
